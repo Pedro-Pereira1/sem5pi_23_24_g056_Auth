@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
 using DDDSample1.Domain.Shared;
 
-namespace Users
+namespace RoDroneGo.Domain.Users
 {
     public class Name : IValueObject
     {
