@@ -1,6 +1,6 @@
 using DDDSample1.Domain.Shared;
 
-namespace RoDroneGo.Domain.Users
+namespace RobDroneGoAuth.Domain.Users
 {
     public class Email : IValueObject
     {

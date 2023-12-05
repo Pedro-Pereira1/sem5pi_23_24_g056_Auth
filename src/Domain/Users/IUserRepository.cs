@@ -1,6 +1,6 @@
 using DDDSample1.Domain.Shared;
 
-namespace Users.Repository
+namespace RobDroneGoAuth.Domain.Users
 {
     public interface IUserRepository : IRepository<User, Email>
     {
