@@ -1,15 +1,16 @@
+using System.Text.Json.Serialization;
 using DDDSample1.Domain.Shared;
 
 namespace RobDroneGoAuth.Domain.Users
 {
-    public class Email : IValueObject
+    public class Email : EntityId
     {
-        protected Email()
+        [JsonConstructor]
+        protected Email(Guid guid) : base(guid)
         {
         }
-        protected Email(String email)
+        protected Email(String email) : base(email)
         {
-            EmailAddress = email;
         }
 
         public static Email Create(String email)
@@ -21,9 +22,14 @@ namespace RobDroneGoAuth.Domain.Users
             return new Email(email);
         }
 
-        public String EmailAddress
+        protected override object createFromString(string text)
         {
-            get;
+            return Email.Create(text);
+        }
+
+        public override string AsString()
+        {
+            return Value;
         }
     }
 }
