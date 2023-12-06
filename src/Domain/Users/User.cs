@@ -20,13 +20,13 @@ namespace RobDroneGoAuth.Domain.Users
         public PhoneNumber PhoneNumber { get; }
         public Password Password { get; }
 
-        public static User Create(String name, String email, int taxPayerNumber, int phoneNumber)
+        public static User Create(String name, String email, int taxPayerNumber, int phoneNumber, string password)
         {
             return new User(Name.Create(name),
                 Email.Create(email),
                 TaxpayerNumber.Create(taxPayerNumber),
                 PhoneNumber.Create(phoneNumber),
-                Password.Create("1234567890"));
+                Password.Create(password));
         }
 
     }
