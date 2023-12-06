@@ -2,23 +2,23 @@ using DDDSample1.Domain.Shared;
 
 namespace RobDroneGoAuth.Domain.Users
 {
-    public class TaxpayerNumber : IValueObject
+    public class TaxPayerNumber : IValueObject
     {
-        protected TaxpayerNumber()
+        protected TaxPayerNumber()
         {
         }
-        protected TaxpayerNumber(int taxpayerNumber)
+        protected TaxPayerNumber(int taxpayerNumber)
         {
             Number = taxpayerNumber;
         }
 
-        public static TaxpayerNumber Create(int taxpayerNumber)
+        public static TaxPayerNumber Create(int taxpayerNumber)
         {
             if (taxpayerNumber < 0 || taxpayerNumber > 999999999)
             {
                 throw new BusinessRuleValidationException("TaxPayerNumber must contain 9 digits");
             }
-            return new TaxpayerNumber(taxpayerNumber);
+            return new TaxPayerNumber(taxpayerNumber);
         }
 
         public int Number
