@@ -6,7 +6,10 @@ namespace RobDroneGoAuth.Domain.Users
     public class User : IAggregateRoot
     {
 
-        private User(Name name, Email email, TaxpayerNumber taxPayerNumber, PhoneNumber phoneNumber, Password password)
+        protected User()
+        {
+        }
+        protected User(Name name, Email email, TaxpayerNumber taxPayerNumber, PhoneNumber phoneNumber, Password password)
         {
             Name = name;
             Email = email;
@@ -14,8 +17,9 @@ namespace RobDroneGoAuth.Domain.Users
             PhoneNumber = phoneNumber;
             Password = password;
         }
-        public Name Name { get; }
+        
         public Email Email { get; }
+        public Name Name { get; }
         public TaxpayerNumber TaxPayerNumber { get; }
         public PhoneNumber PhoneNumber { get; }
         public Password Password { get; }

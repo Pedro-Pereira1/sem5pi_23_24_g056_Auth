@@ -4,7 +4,10 @@ namespace RobDroneGoAuth.Domain.Users
 {
     public class Password : IValueObject
     {
-        private Password(String password)
+        protected Password()
+        {
+        }
+        protected Password(String password)
         {
             PasswordString = password;
         }

@@ -5,7 +5,10 @@ namespace RobDroneGoAuth.Domain.Users
 {
     public class Name : IValueObject
     {
-        private Name(String name)
+        protected Name()
+        {
+        }
+        protected Name(String name)
         {
             NameString = name;
         }

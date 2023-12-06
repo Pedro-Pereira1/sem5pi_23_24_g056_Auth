@@ -4,7 +4,10 @@ namespace RobDroneGoAuth.Domain.Users
 {
     public class PhoneNumber : IValueObject
     {
-        private PhoneNumber(int phoneNumber)
+        protected PhoneNumber()
+        {
+        }
+        protected PhoneNumber(int phoneNumber)
         {
             Number = phoneNumber;
         }

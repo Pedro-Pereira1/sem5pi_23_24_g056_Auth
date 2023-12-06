@@ -4,7 +4,10 @@ namespace RobDroneGoAuth.Domain.Users
 {
     public class TaxpayerNumber : IValueObject
     {
-        private TaxpayerNumber(int taxpayerNumber)
+        protected TaxpayerNumber()
+        {
+        }
+        protected TaxpayerNumber(int taxpayerNumber)
         {
             Number = taxpayerNumber;
         }

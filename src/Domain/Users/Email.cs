@@ -4,7 +4,10 @@ namespace RobDroneGoAuth.Domain.Users
 {
     public class Email : IValueObject
     {
-        private Email(String email)
+        protected Email()
+        {
+        }
+        protected Email(String email)
         {
             EmailAddress = email;
         }
