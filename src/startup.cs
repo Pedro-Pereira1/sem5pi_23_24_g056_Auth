@@ -15,9 +15,12 @@ namespace Application
     public class StartUp
     {
 
-        public StartUp(IConfiguration configuration)
+        private readonly ILogger<StartUp> _logger;
+
+        public StartUp(IConfiguration configuration, ILogger<StartUp> logger)
         {
             Configuration = configuration;
+            this._logger = logger;
         }
 
         public IConfiguration Configuration { get; }
@@ -25,17 +28,25 @@ namespace Application
 
         public void ConfigureServices(IServiceCollection services)
         {
+            _logger.LogInformation("StartUp: ConfigureServices");
+            _logger.LogInformation("Adding DbContext");
+
             services.AddDbContext<RobDroneGoAuthContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
                  ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection"))));
 
+            _logger.LogInformation("Adding Repositories and Services");
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<UserService, UserService>();
 
+            _logger.LogInformation("Adding Controllers");
+
             services.AddEndpointsApiExplorer();
             services.AddControllers().AddNewtonsoftJson();
+
+            _logger.LogInformation("StartUp: ConfigureServices has finished\n\n");
         }
 
         public void Configure(IApplicationBuilder applicationBuilder, IWebHostEnvironment hostEnvironment)
