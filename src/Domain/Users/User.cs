@@ -22,7 +22,7 @@ namespace RobDroneGoAuth.Domain.Users
             Password = password;
         }
 
-        public static User Create(String name, String email, int taxPayerNumber, int phoneNumber, string password)
+        public static User Create(string name, string email, int taxPayerNumber, int phoneNumber, string password)
         {
             return new User(Name.Create(name),
                 Email.Create(email),

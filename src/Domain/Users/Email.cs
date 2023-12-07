@@ -5,31 +5,13 @@ namespace RobDroneGoAuth.Domain.Users
 {
     public class Email : EntityId
     {
-        [JsonConstructor]
-        protected Email(Guid guid) : base(guid)
-        {
-        }
-        protected Email(String email) : base(email)
+        protected Email(string email) : base(email)
         {
         }
 
-        public static Email Create(String email)
+        public static Email Create(string email)
         {
-            if (!email.EndsWith("@isep.ipp.pt"))
-            {
-                throw new BusinessRuleValidationException("Email must be an ISEP email");
-            }
             return new Email(email);
-        }
-
-        protected override object createFromString(string text)
-        {
-            return Email.Create(text);
-        }
-
-        public override string AsString()
-        {
-            return Value;
         }
     }
 }
