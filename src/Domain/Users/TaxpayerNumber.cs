@@ -14,7 +14,7 @@ namespace RobDroneGoAuth.Domain.Users
 
         public static TaxPayerNumber Create(int taxpayerNumber)
         {
-            if (taxpayerNumber < 0 || taxpayerNumber > 999999999)
+            if (taxpayerNumber < 99999999 || taxpayerNumber > 999999999)
             {
                 throw new BusinessRuleValidationException("TaxPayerNumber must contain 9 digits");
             }

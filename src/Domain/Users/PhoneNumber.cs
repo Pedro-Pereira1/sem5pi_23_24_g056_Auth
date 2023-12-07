@@ -14,7 +14,7 @@ namespace RobDroneGoAuth.Domain.Users
 
         public static PhoneNumber Create(int phoneNumber)
         {
-            if (phoneNumber < 0 || phoneNumber > 999999999)
+            if (phoneNumber < 99999999 || phoneNumber > 999999999)
             {
                 throw new BusinessRuleValidationException("PhoneNumber must contain 9 digits");
             }
