@@ -7,39 +7,17 @@ namespace DDDSample1.Domain.Shared
     /// </summary>
     public abstract class EntityId: IEquatable<EntityId>, IComparable<EntityId>
     {
-        protected Object ObjValue {get;}
+        public string Value { get; }
 
-        public String Value { 
-            get { 
-                    if (this.ObjValue.GetType() == typeof(String))
-                        return (String) this.ObjValue;
-                    return AsString();
-                } 
-        }
-
-        protected EntityId(Object value)
+        protected EntityId(string value)
         {
-            if (value.GetType() == typeof(String))
-                this.ObjValue = createFromString((String)value);
-            else
-                this.ObjValue = value;
+            this.Value = value;
         }
-
-       
-        protected abstract Object createFromString(String text);
-        
-        public abstract String AsString();
-
 
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             return obj is EntityId other && Equals(other);
-        }
-
-        public override int GetHashCode()
-        {
-            return Value.GetHashCode();
         }
 
         public bool Equals(EntityId other)
