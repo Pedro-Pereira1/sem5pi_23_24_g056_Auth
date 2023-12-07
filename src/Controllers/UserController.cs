@@ -5,6 +5,7 @@ using RobDroneGoAuth.Infrastructure.Users;
 namespace RobDroneGoAuth.Controllers.User
 {
     [Route("api/users")]
+    [ApiController]
     public class UserController : ControllerBase
     {
         private readonly UserService _userService;
