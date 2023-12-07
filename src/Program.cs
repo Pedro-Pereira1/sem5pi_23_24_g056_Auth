@@ -11,7 +11,10 @@ namespace Application {
 
         public static IWebHostBuilder CreateWebHostBuilder(String[] args) => 
             WebHost.CreateDefaultBuilder(args)
-                .UseSetting("https_port", "5171")
-                .UseStartup<StartUp>(); 
+            .ConfigureLogging(logging => {
+                logging.ClearProviders();
+                logging.AddConsole();
+            })
+            .UseStartup<StartUp>(); 
     }
 }
