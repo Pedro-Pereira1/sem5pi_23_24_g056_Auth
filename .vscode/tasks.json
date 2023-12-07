@@ -1,0 +1,16 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "watch run",
+            "command": "cd ./src; dotnet watch --launch-profile https"
+        },
+        {
+            "type": "shell",
+            "label": "run",
+            "command": "cd ./src; dotnet run --launch-profile https"
+        }
+
+    ]
+}
