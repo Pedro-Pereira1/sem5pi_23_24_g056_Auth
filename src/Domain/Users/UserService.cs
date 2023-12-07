@@ -29,12 +29,12 @@ namespace RobDroneGoAuth.Infrastructure.Users
             }
             catch (BusinessRuleValidationException e)
             {
-                _logger.LogError("UserService: Error has occurred while registering user: " + e.Message);
+                _logger.LogWarning("UserService: Error has occurred while registering user: " + e.Message + "\n\n");
                 throw new BusinessRuleValidationException(e.Message);
             }
             catch (Exception e)
             {
-                _logger.LogError("UserService: Error has occurred while registering user: " + e.Message);
+                _logger.LogError("UserService: Error has occurred while registering user: " + e.Message + "\n\n");
                 throw new Exception(e.Message);
             }
         }
