@@ -18,7 +18,6 @@ namespace RobDroneGoAuth.Controllers.User
         {
             try
             {
-                Console.WriteLine("Create User");
                 var user = await this._userService.RegisterUser(dto);
                 return user;
             }
