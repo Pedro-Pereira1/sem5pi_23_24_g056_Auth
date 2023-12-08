@@ -20,7 +20,8 @@ namespace RobDroneGoAuth.Infrastructure.Users
                 .HasConversion(
                     v => v.NameString,
                     v => Name.Create(v))
-                .IsRequired();
+                .IsRequired()
+                .HasMaxLength(255);
 
             builder.Property(b => b.Password)
                 .HasConversion(
@@ -45,7 +46,8 @@ namespace RobDroneGoAuth.Infrastructure.Users
                 .HasConversion(
                     v => v.Value,
                     v => Role.Create(v))
-                .IsRequired();
+                .IsRequired()
+                .HasMaxLength(255);
 
         }
     }
