@@ -10,6 +10,11 @@
             "type": "shell",
             "label": "run",
             "command": "cd ./src; dotnet run --launch-profile https"
+        },
+        {
+            "type": "shell",
+            "label": "run all tests",
+            "command": "dotnet test sem5pi_23_24_g056_Auth.sln"
         }
 
     ]
