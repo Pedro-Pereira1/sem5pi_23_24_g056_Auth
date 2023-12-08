@@ -8,6 +8,7 @@ namespace RobDroneGoAuth.Infrastructure.Users
         private readonly IUnitOfWork _unitOfWork;
         private readonly IUserRepository _userRepository;
         private readonly ILogger<UserService> _logger;
+        private readonly string _defaultRole = "utente";
 
         public UserService(ILogger<UserService> logger, IUnitOfWork unitOfWork, IUserRepository userRepository)
         {
@@ -22,7 +23,7 @@ namespace RobDroneGoAuth.Infrastructure.Users
             {
                 _logger.LogInformation("UserService: Registering user\n\n");
 
-                var user = User.Create(dto.Name, dto.Email, dto.TaxPayerNumber, dto.PhoneNumber, dto.Password);
+                var user = User.Create(dto.Name, dto.Email, dto.TaxPayerNumber, dto.PhoneNumber, dto.Password, _defaultRole);
                 await this._userRepository.AddAsync(user);
                 await this._unitOfWork.CommitAsync();
                 return new UserDto(user.Name.NameString, user.Id.Value, user.PhoneNumber.Number, user.TaxPayerNumber.Number);

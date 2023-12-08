@@ -37,6 +37,11 @@ namespace RobDroneGoAuth.Infrastructure.Users
                     v => v.Number,
                     v => TaxPayerNumber.Create(v));
 
+            builder.Property(b => b.Role)
+                .HasConversion(
+                    v => v.Value,
+                    v => Role.Create(v));
+
         }
     }
 }

@@ -103,8 +103,9 @@ public class UserTest
         int phoneNumber = 930597721;
         int taxPayerNumber = 290088763;
         string password = "1211089aA!";
+        string role = "utente";
 
-        Assert.ThrowsException<BusinessRuleValidationException>(() => User.Create(name, email, taxPayerNumber, phoneNumber, password));
+        Assert.ThrowsException<BusinessRuleValidationException>(() => User.Create(name, email, taxPayerNumber, phoneNumber, password, role));
     }
 
     [TestMethod]
@@ -115,8 +116,9 @@ public class UserTest
         int phoneNumber = 930597721;
         int taxPayerNumber = 290088763;
         string password = "1211089aA!";
+        string role = "utente";
 
-        User user = User.Create(name, email, taxPayerNumber, phoneNumber, password);
+        User user = User.Create(name, email, taxPayerNumber, phoneNumber, password, role);
         Assert.AreEqual(name, user.Name.NameString);
         Assert.AreEqual(email, user.Id.Value);
         Assert.AreEqual(phoneNumber, user.PhoneNumber.Number);
