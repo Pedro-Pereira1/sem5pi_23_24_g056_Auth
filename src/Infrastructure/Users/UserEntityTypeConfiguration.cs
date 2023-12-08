@@ -19,28 +19,33 @@ namespace RobDroneGoAuth.Infrastructure.Users
             builder.Property(b => b.Name)
                 .HasConversion(
                     v => v.NameString,
-                    v => Name.Create(v));
+                    v => Name.Create(v))
+                .IsRequired();
 
             builder.Property(b => b.Password)
                 .HasConversion(
                     v => v.PasswordString,
-                    v => Password.Create(v));
+                    v => Password.Create(v))
+                .IsRequired();
 
             builder.Property(b => b.PhoneNumber)
                 .HasConversion(
                     v => v.Number,
-                    v => PhoneNumber.Create(v));
+                    v => PhoneNumber.Create(v))
+                .IsRequired();
 
 
             builder.Property(b => b.TaxPayerNumber)
                 .HasConversion(
                     v => v.Number,
-                    v => TaxPayerNumber.Create(v));
+                    v => TaxPayerNumber.Create(v))
+                .IsRequired();
 
             builder.Property(b => b.Role)
                 .HasConversion(
                     v => v.Value,
-                    v => Role.Create(v));
+                    v => Role.Create(v))
+                .IsRequired();
 
         }
     }
