@@ -16,6 +16,10 @@ namespace RobDroneGoAuth.Domain.Users
             {
                 throw new BusinessRuleValidationException("Email can't be null.");
             }
+            if (email.Length == 0)
+            {
+                throw new BusinessRuleValidationException("Email can't be empty.");
+            }
             if (!email.Contains('@'))
             {
                 throw new BusinessRuleValidationException("Email must contain '@'.");
