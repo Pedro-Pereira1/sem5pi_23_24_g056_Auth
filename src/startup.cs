@@ -39,7 +39,7 @@ namespace Application
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IUserRepository, UserRepository>();
-            services.AddTransient<UserService, UserService>();
+            services.AddTransient<IUserService, UserService>();
 
             _logger.LogInformation("Adding Controllers");
 

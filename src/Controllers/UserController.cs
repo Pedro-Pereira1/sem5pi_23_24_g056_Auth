@@ -8,8 +8,8 @@ namespace RobDroneGoAuth.Controllers.User
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly UserService _userService;
-        public UserController(UserService userService)
+        private readonly IUserService _userService;
+        public UserController(IUserService userService)
         {
             this._userService = userService;
         }

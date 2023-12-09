@@ -3,7 +3,7 @@ using RobDroneGoAuth.Domain.Users;
 
 namespace RobDroneGoAuth.Infrastructure.Users
 {
-    public class UserService
+    public class UserService : IUserService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IUserRepository _userRepository;
