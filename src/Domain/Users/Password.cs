@@ -47,5 +47,14 @@ namespace RobDroneGoAuth.Domain.Users
         {
             get;
         }
+
+        public bool Equals(Password other)
+        {
+            return this.PasswordString.Equals(other.PasswordString);
+        }
+        public bool Equals(string other)
+        {
+            return this.PasswordString.Equals(other);
+        }
     }
 }

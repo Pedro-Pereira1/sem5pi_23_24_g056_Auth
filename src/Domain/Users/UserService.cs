@@ -39,5 +39,37 @@ namespace RobDroneGoAuth.Infrastructure.Users
                 throw new Exception(e.Message);
             }
         }
+
+        public async Task<UserSessionDto> LogIn(LogInDto dto)
+        {
+            try
+            {
+                _logger.LogInformation("UserService: Logging in user\n\n");
+
+                Email email = Email.Create(dto.Email);
+                var user = await this._userRepository.GetByIdAsync(email);
+                if (user == null)
+                {
+                    _logger.LogWarning("UserService: Error has occurred while logging in user: User not found\n\n");
+                    throw new BusinessRuleValidationException("User not found");
+                }
+                if (!user.Password.Equals(dto.Password))
+                {
+                    _logger.LogWarning("UserService: Error has occurred while logging in user: Wrong password\n\n");
+                    throw new BusinessRuleValidationException("Wrong password");
+                }
+                return new UserSessionDto(user.Id.Value);
+            }
+            catch (BusinessRuleValidationException e)
+            {
+                _logger.LogWarning("UserService: Error has occurred while logging in user: " + e.Message + "\n\n");
+                throw new BusinessRuleValidationException(e.Message);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError("UserService: Error has occurred while logging in user: " + e.Message + "\n\n");
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

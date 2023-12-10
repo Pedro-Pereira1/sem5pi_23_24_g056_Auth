@@ -14,6 +14,20 @@ namespace RobDroneGoAuth.Controllers.User
             this._userService = userService;
         }
 
+        [HttpPost("login")]
+        public async Task<ActionResult<UserSessionDto>> LogIn([FromBody] LogInDto dto)
+        {
+            try
+            {
+                var userSession = await this._userService.LogIn(dto);
+                return Ok(userSession);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult<UserDto>> RegisterUser([FromBody] CreateUserDto dto)
         {
