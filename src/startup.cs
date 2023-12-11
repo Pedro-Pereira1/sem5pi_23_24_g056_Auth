@@ -45,6 +45,7 @@ namespace Application
 
             services.AddEndpointsApiExplorer();
             services.AddControllers().AddNewtonsoftJson();
+            services.AddSwaggerGen();
 
             _logger.LogInformation("StartUp: ConfigureServices has finished\n\n");
         }
@@ -54,6 +55,8 @@ namespace Application
             if (hostEnvironment.IsDevelopment())
             {
                 applicationBuilder.UseDeveloperExceptionPage();
+                applicationBuilder.UseSwagger();
+                applicationBuilder.UseSwaggerUI();
             }
             else
             {
