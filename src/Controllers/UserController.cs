@@ -20,7 +20,7 @@ namespace RobDroneGoAuth.Controllers.User
             try
             {
                 var userSession = await this._userService.LogIn(dto);
-                return Ok(userSession);
+                return Ok(userSession.Token);
             }
             catch (Exception e)
             {
