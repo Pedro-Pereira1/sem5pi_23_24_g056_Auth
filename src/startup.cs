@@ -8,6 +8,7 @@ using DDDSample1.Domain.Shared;
 using RobDroneGoAuth.Infrastructure;
 using RobDroneGoAuth.Domain.Users;
 using RobDroneGoAuth.Infrastructure.Users;
+using Microsoft.Extensions.Options;
 
 namespace Application
 {
@@ -47,6 +48,17 @@ namespace Application
             services.AddControllers().AddNewtonsoftJson();
             services.AddSwaggerGen();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "AllowAnyOrigin",
+                policy => 
+                {
+                    policy.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+                });
+            });
+
+
+
             _logger.LogInformation("StartUp: ConfigureServices has finished\n\n");
         }
 
@@ -66,6 +78,7 @@ namespace Application
 
             applicationBuilder.UseHttpsRedirection();
             applicationBuilder.UseRouting();
+            applicationBuilder.UseCors("AllowAnyOrigin");
             applicationBuilder.UseAuthorization();
             applicationBuilder.UseEndpoints(endpoints =>
             {
