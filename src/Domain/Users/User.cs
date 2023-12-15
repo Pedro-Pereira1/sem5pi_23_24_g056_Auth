@@ -24,7 +24,7 @@ namespace RobDroneGoAuth.Domain.Users
             Role = role;
         }
 
-        public static User Create(string name, string email, int taxPayerNumber, int phoneNumber, string password, string role)
+        public static User Create(string name, string email, string taxPayerNumber, string phoneNumber, string password, string role)
         {
             return new User(Name.Create(name),
                 Email.Create(email),

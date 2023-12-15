@@ -7,21 +7,21 @@ namespace RobDroneGoAuth.Domain.Users
         protected PhoneNumber()
         {
         }
-        protected PhoneNumber(int phoneNumber)
+        protected PhoneNumber(string phoneNumber)
         {
             Number = phoneNumber;
         }
 
-        public static PhoneNumber Create(int phoneNumber)
+        public static PhoneNumber Create(string phoneNumber)
         {
-            if (phoneNumber < 99999999 || phoneNumber > 999999999)
+            if (phoneNumber.Length != 9)
             {
                 throw new BusinessRuleValidationException("PhoneNumber must contain 9 digits");
             }
             return new PhoneNumber(phoneNumber);
         }
 
-        public int Number
+        public string Number
         {
             get;
         }

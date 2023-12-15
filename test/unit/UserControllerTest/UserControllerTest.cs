@@ -23,8 +23,8 @@ public class UserControllerTest
 
         string name = "Jose Gouveia";
         string email = "1211089isep.ipp.pt";
-        int phoneNumber = 930597721;
-        int taxPayerNumber = 290088763;
+        string phoneNumber = "930597721";
+        string taxPayerNumber = "290088763";
         string password = "1211089aA!";
 
         CreateUserDto dto = new CreateUserDto(name, email, phoneNumber, taxPayerNumber, password);
@@ -38,8 +38,8 @@ public class UserControllerTest
     {
         string name = "Jose Gouveia";
         string email = "1211089@isep.ipp.pt";
-        int phoneNumber = 930597721;
-        int taxPayerNumber = 290088763;
+        string phoneNumber = "930597721";
+        string taxPayerNumber = "290088763";
         string password = "1211089aA!";
 
         CreateUserDto dto = new CreateUserDto(name, email, phoneNumber, taxPayerNumber, password);

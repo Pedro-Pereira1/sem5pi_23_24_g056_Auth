@@ -66,30 +66,30 @@ public class UserTest
     }
 
     [TestMethod]
-    [DataRow(93059772)]
-    public void Check_Invalid_PhoneNumber(int value)
+    [DataRow("93059772")]
+    public void Check_Invalid_PhoneNumber(string value)
     {
         Assert.ThrowsException<BusinessRuleValidationException>(() => PhoneNumber.Create(value));
     }
 
     [TestMethod]
-    [DataRow(930597721)]
-    public void Check_Valid_PhoneNumber(int value)
+    [DataRow("930597721")]
+    public void Check_Valid_PhoneNumber(string value)
     {
         PhoneNumber phoneNumber = PhoneNumber.Create(value);
         Assert.AreEqual(value, phoneNumber.Number);
     }
 
     [TestMethod]
-    [DataRow(29008876)]
-    public void Check_Invalid_TaxPayerNumber(int value)
+    [DataRow("29008876")]
+    public void Check_Invalid_TaxPayerNumber(string value)
     {
         Assert.ThrowsException<BusinessRuleValidationException>(() => PhoneNumber.Create(value));
     }
 
     [TestMethod]
-    [DataRow(290088763)]
-    public void Check_Valid_TaxPayerNumber(int value)
+    [DataRow("290088763")]
+    public void Check_Valid_TaxPayerNumber(string value)
     {
         TaxPayerNumber taxPayerNumber = TaxPayerNumber.Create(value);
         Assert.AreEqual(value, taxPayerNumber.Number);
@@ -100,8 +100,8 @@ public class UserTest
     {
         string name = "Jose Gouveia";
         string email = "1211089isep.ipp.pt";
-        int phoneNumber = 930597721;
-        int taxPayerNumber = 290088763;
+        string phoneNumber = "930597721";
+        string taxPayerNumber = "290088763";
         string password = "1211089aA!";
         string role = "utente";
 
@@ -113,8 +113,8 @@ public class UserTest
     {
         string name = "Jose Gouveia";
         string email = "1211089@isep.ipp.pt";
-        int phoneNumber = 930597721;
-        int taxPayerNumber = 290088763;
+        string phoneNumber = "930597721";
+        string taxPayerNumber = "290088763";
         string password = "1211089aA!";
         string role = "utente";
 

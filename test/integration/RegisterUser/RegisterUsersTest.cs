@@ -1,5 +1,6 @@
 using DDDSample1.Domain.Shared;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Moq;
 using RobDroneGoAuth.Controllers.User;
@@ -17,18 +18,19 @@ public class RegisterUsersTest
         Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
         Mock<IUnitOfWork> unitOfWork = new Mock<IUnitOfWork>();
         Mock<ILogger<UserService>> logger = new Mock<ILogger<UserService>>();
+        Mock<IConfiguration> configuration = new Mock<IConfiguration>();
 
         userRepository.Setup(x => x.AddAsync(It.IsAny<User>()));
         unitOfWork.Setup(x => x.CommitAsync());
 
-        IUserService userService = new UserService(logger.Object, unitOfWork.Object, userRepository.Object);
+        IUserService userService = new UserService(logger.Object, unitOfWork.Object, userRepository.Object, configuration.Object);
 
         UserController userController = new UserController(userService);
 
         string name = "Jose Gouveia";
         string email = "1211089isep.ipp.pt";
-        int phoneNumber = 930597721;
-        int taxPayerNumber = 290088763;
+        string phoneNumber = "930597721";
+        string taxPayerNumber = "290088763";
         string password = "1211089aA!";
 
         CreateUserDto dto = new CreateUserDto(name, email, phoneNumber, taxPayerNumber, password);
@@ -43,16 +45,17 @@ public class RegisterUsersTest
         Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
         Mock<IUnitOfWork> unitOfWork = new Mock<IUnitOfWork>();
         Mock<ILogger<UserService>> logger = new Mock<ILogger<UserService>>();
+        Mock<IConfiguration> configuration = new Mock<IConfiguration>();
         userRepository.Setup(x => x.AddAsync(It.IsAny<User>()));
         unitOfWork.Setup(x => x.CommitAsync());
 
-        IUserService userService = new UserService(logger.Object, unitOfWork.Object, userRepository.Object);
+        IUserService userService = new UserService(logger.Object, unitOfWork.Object, userRepository.Object, configuration.Object);
         UserController userController = new UserController(userService);
 
         string name = "Jose Gouveia";
         string email = "1211089@isep.ipp.pt";
-        int phoneNumber = 930597721;
-        int taxPayerNumber = 290088763;
+        string phoneNumber = "930597721";
+        string taxPayerNumber = "290088763";
         string password = "1211089aA!";
         CreateUserDto dto = new CreateUserDto(name, email, phoneNumber, taxPayerNumber, password);
         UserDto userDto = new UserDto(name, email, phoneNumber, taxPayerNumber);

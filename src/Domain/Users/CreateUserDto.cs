@@ -4,11 +4,11 @@ namespace RobDroneGoAuth.Domain.Users
     {
         public string Name { get; set; }
         public string Email { get; set; }
-        public int PhoneNumber { get; set; }
-        public int TaxPayerNumber { get; set; }
+        public string PhoneNumber { get; set; }
+        public string TaxPayerNumber { get; set; }
         public string Password { get; set; }
 
-        public CreateUserDto(string name, string email, int phoneNumber, int taxPayerNumber, string password)
+        public CreateUserDto(string name, string email, string phoneNumber, string taxPayerNumber, string password)
         {
             this.Name = name;
             this.Email = email;

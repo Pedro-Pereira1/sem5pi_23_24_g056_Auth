@@ -7,21 +7,21 @@ namespace RobDroneGoAuth.Domain.Users
         protected TaxPayerNumber()
         {
         }
-        protected TaxPayerNumber(int taxpayerNumber)
+        protected TaxPayerNumber(string taxpayerNumber)
         {
             Number = taxpayerNumber;
         }
 
-        public static TaxPayerNumber Create(int taxpayerNumber)
+        public static TaxPayerNumber Create(string taxpayerNumber)
         {
-            if (taxpayerNumber < 99999999 || taxpayerNumber > 999999999)
+            if (taxpayerNumber.Length != 9)
             {
                 throw new BusinessRuleValidationException("TaxPayerNumber must contain 9 digits");
             }
             return new TaxPayerNumber(taxpayerNumber);
         }
 
-        public int Number
+        public string Number
         {
             get;
         }

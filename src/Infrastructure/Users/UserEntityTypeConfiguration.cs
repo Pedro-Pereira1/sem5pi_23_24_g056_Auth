@@ -33,14 +33,16 @@ namespace RobDroneGoAuth.Infrastructure.Users
                 .HasConversion(
                     v => v.Number,
                     v => PhoneNumber.Create(v))
-                .IsRequired();
+                .IsRequired()
+                .HasMaxLength(255);
 
 
             builder.Property(b => b.TaxPayerNumber)
                 .HasConversion(
                     v => v.Number,
                     v => TaxPayerNumber.Create(v))
-                .IsRequired();
+                .IsRequired()
+                .HasMaxLength(255);
 
             builder.Property(b => b.Role)
                 .HasConversion(
