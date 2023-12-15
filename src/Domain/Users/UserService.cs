@@ -30,6 +30,13 @@ namespace RobDroneGoAuth.Infrastructure.Users
             {
                 _logger.LogInformation("UserService: Registering user\n\n");
 
+                var email = Email.Create(dto.Email);
+                var userInDb = await this._userRepository.GetByIdAsync(email);
+                if (userInDb != null)
+                {
+                    throw new BusinessRuleValidationException("Email already in use");
+                }
+
                 var user = User.Create(dto.Name, dto.Email, dto.TaxPayerNumber, dto.PhoneNumber, dto.Password, _defaultRole);
                 await this._userRepository.AddAsync(user);
                 await this._unitOfWork.CommitAsync();
@@ -65,7 +72,7 @@ namespace RobDroneGoAuth.Infrastructure.Users
                     _logger.LogWarning("UserService: Error has occurred while logging in user: Wrong password\n\n");
                     throw new BusinessRuleValidationException("Wrong password");
                 }
-                
+
                 return new UserSessionDto(CreateToken(user));
             }
             catch (BusinessRuleValidationException e)
@@ -85,7 +92,7 @@ namespace RobDroneGoAuth.Infrastructure.Users
             List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.Value),
-            };            
+            };
             var key = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value!));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
