@@ -3,7 +3,7 @@
 skinparam linetype ortho
 
 node Server1{
-   component "<<Visualização>>" as V {
+   component "<<Visualization>>" as V {
     }
 }
 
@@ -16,7 +16,7 @@ node Server2{
 }
 
 node Server3{
-  component "<<Planeamento>>" as P {
+  component "<<Planning>>" as P {
   }
 }
 
@@ -24,9 +24,17 @@ node Server4{
   database MongoDB
 }
 
+node Server5{
+  database Auth
+}
+
+node Server6{
+  database Database
+}
 
 
-Server1 -d- Server2: http/s
-Server2 -u- Server3: http/s
+
+
 Server2 -u- Server4
+Server5 -u- Server6
 @enduml
