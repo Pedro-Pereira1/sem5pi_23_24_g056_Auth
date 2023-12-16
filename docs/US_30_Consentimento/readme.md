@@ -29,6 +29,68 @@ O preenchimento da checkbox é obrigatório e se não for preenchido deve ser ap
 
 ## 4. Implementation
 
+#### RegisterComponent HTML
+
+```
+<div class="privacy">
+                <input type="checkbox" id="checkbox" (change)="updatePrivacy($event)" />
+                <label for="checkbox">I confirm that I have read the <a
+                        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">privacy
+                        policy</a></label>
+</div>
+````
+
+#### RegisterComponent
+
+```
+export class RegisterComponent {
+
+  isChecked = false;
+
+  constructor(private authService: AuthServiceService,
+    private router: Router) { }
+
+  registerForm = new FormGroup({
+    name: new FormControl(""),
+    email: new FormControl(""),
+    phoneNumber: new FormControl(""),
+    taxPayerNumber: new FormControl(""),
+    password: new FormControl("")
+  })
+
+  onSubmit() {
+
+    if(this.isChecked) {
+      const user: RegisterUserDto = {
+        name: this.registerForm.value.name!,
+        email: this.registerForm.value.email!,
+        phoneNumber: Number(this.registerForm.value.phoneNumber!),
+        taxPayerNumber: Number(this.registerForm.value.taxPayerNumber!),
+        password: this.registerForm.value.password!
+      }
+      this.authService.register(user).subscribe((user: UserDto) => {
+        window.alert("User " + user.name + " created successfully");
+      })
+    } else {
+      window.alert("You must accept the terms and conditions");
+      return;
+    }
+
+  }
+
+
+  updatePrivacy(event: Event) {
+    const checkbox = event.target as HTMLInputElement;
+    if (checkbox.checked) {
+      this.isChecked = true;
+    } else {
+      this.isChecked = false;
+    }
+  }
+
+}
+````
+
 ## 5. Test
 
 ## 6. Observations
