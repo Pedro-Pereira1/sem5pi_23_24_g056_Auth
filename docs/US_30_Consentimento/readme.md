@@ -93,5 +93,15 @@ export class RegisterComponent {
 
 ## 5. Test
 
+**Test 1:** *Verifies that checkbox exists and can be used.*
+```
+it('should display checkbox consent or not to the collection and processing of my personal data', () => {
+cy.get('input[type="checkbox"]').first().check({force: true}).should('be.checked');
+cy.get('input[type="checkbox"]').first().uncheck({force: true}).should('not.be.checked');
+});
+````
+**Test 2:** *Verifies that a message appear blocking the user creation.*
+![img.png](img.png)
+
 ## 6. Observations
 
