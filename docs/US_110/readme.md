@@ -2,6 +2,8 @@
 
 ## 1. Context
 
+* This is the first time this task is being developed
+
 ## 2. Requirements
 
 ## 3. Analysis
