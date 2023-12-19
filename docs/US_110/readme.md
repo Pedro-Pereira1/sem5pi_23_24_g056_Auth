@@ -23,9 +23,6 @@ As an actor of the system, I want to be able to copy my personal data.
 In the process of copying my personal data the user should be able to download a json file with his/hers personal data.
 The user should be able to download the file from the system by clicking a button.
 
-### 3.1. Domain Model Excerpt
-![DomainModelExcerpt](Diagrams/DomainModelExcerpt.svg)
-
 ## 4. Design
 
 ### 4.1. Realization
