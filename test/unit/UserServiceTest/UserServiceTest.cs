@@ -1,6 +1,7 @@
 using Moq;
 using RobDroneGoAuth.Domain.Users;
-using RobDroneGoAuth.Infrastructure.Users;
+using RobDroneGoAuth.Dto.Users;
+using RobDroneGoAuth.Services.Users;
 using DDDSample1.Domain.Shared;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;

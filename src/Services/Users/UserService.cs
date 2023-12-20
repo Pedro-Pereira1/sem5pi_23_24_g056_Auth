@@ -4,8 +4,9 @@ using System.Text;
 using DDDSample1.Domain.Shared;
 using Microsoft.IdentityModel.Tokens;
 using RobDroneGoAuth.Domain.Users;
+using RobDroneGoAuth.Dto.Users;
 
-namespace RobDroneGoAuth.Infrastructure.Users
+namespace RobDroneGoAuth.Services.Users
 {
     public class UserService : IUserService
     {

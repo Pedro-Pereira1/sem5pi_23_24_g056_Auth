@@ -20,8 +20,8 @@
                 "enableSsl": "Disabled"
             },
             "previewLimit": 50,
-            "server": "vs1247.dei.isep.ipp.pt",
-            "port": 3306,
+            "server": "vsgate-s1.dei.isep.ipp.pt",
+            "port": 11247,
             "driver": "MySQL",
             "name": "Isep",
             "database": "Users",

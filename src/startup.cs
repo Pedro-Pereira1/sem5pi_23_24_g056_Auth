@@ -7,8 +7,9 @@ using RobDroneGo.Infrastructure;
 using DDDSample1.Domain.Shared;
 using RobDroneGoAuth.Infrastructure;
 using RobDroneGoAuth.Domain.Users;
-using RobDroneGoAuth.Infrastructure.Users;
+using RobDroneGoAuth.Services.Users;
 using Microsoft.Extensions.Options;
+using RobDroneGoAuth.Infrastructure.Users;
 
 namespace Application
 {

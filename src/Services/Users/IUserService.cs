@@ -1,6 +1,6 @@
-using RobDroneGoAuth.Domain.Users;
+using RobDroneGoAuth.Dto.Users;
 
-namespace RobDroneGoAuth.Infrastructure.Users
+namespace RobDroneGoAuth.Services.Users
 {
     public interface IUserService
     {

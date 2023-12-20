@@ -5,7 +5,8 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using RobDroneGoAuth.Controllers.User;
 using RobDroneGoAuth.Domain.Users;
-using RobDroneGoAuth.Infrastructure.Users;
+using RobDroneGoAuth.Dto.Users;
+using RobDroneGoAuth.Services.Users;
 
 namespace RegisterUser;
 
