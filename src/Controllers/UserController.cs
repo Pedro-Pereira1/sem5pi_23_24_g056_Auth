@@ -41,5 +41,19 @@ namespace RobDroneGoAuth.Controllers.User
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpPost("backoffice")]
+        public async Task<ActionResult<UserDto>> RegisterBackofficeUser([FromBody] CreateBackofficeUserDto dto)
+        {
+            try
+            {
+                var user = await this._userService.RegisterBackofficeUser(dto);
+                return Ok(user);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }
