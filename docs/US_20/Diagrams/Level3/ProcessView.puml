@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+participant UserController
+participant UserService
+participant UserRepository
+participant User
+participant DbSetUsers
+
+?o-> UserController: api/users (POST)
+activate UserController
+
+UserController -> UserService: registerUser(UserDto)
+activate UserService
+
+UserService -> User: create()
+
+UserService -> UserRepository: save(User)
+activate UserRepository
+
+UserRepository -> DbSetUsers: Add(User)
+activate DbSetUsers
+
+DbSetUsers --> UserRepository
+deactivate DbSetUsers
+
+
+UserRepository --> UserService
+deactivate UserRepository
+
+UserService --> UserController
+deactivate UserService
+
+<-- UserController
+
+deactivate UserController
+
+@enduml
