@@ -105,5 +105,35 @@ namespace RobDroneGoAuth.Services.Users
             var tokenHandler = new JwtSecurityTokenHandler();
             return tokenHandler.WriteToken(jwt);
         }
+
+        public async Task<UserDto> RegisterBackofficeUser(CreateBackofficeUserDto dto)
+        {
+            try
+            {
+                _logger.LogInformation("UserService: Registering user\n\n");
+
+                var email = Email.Create(dto.Email);
+                var userInDb = await this._userRepository.GetByIdAsync(email);
+                if (userInDb != null)
+                {
+                    throw new BusinessRuleValidationException("Email already in use");
+                }
+
+                var user = User.Create(dto.Name, dto.Email, "999999999", dto.PhoneNumber, dto.Password, dto.Role);
+                await this._userRepository.AddAsync(user);
+                await this._unitOfWork.CommitAsync();
+                return new UserDto(user.Name.NameString, user.Id.Value, user.PhoneNumber.Number, user.TaxPayerNumber.Number);
+            }
+            catch (BusinessRuleValidationException e)
+            {
+                _logger.LogWarning("UserService: Error has occurred while registering user: " + e.Message + "\n\n");
+                throw new BusinessRuleValidationException(e.Message);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError("UserService: Error has occurred while registering user: " + e.Message + "\n\n");
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
