@@ -1,4 +1,4 @@
-namespace RobDroneGoAuth.Domain.Users
+namespace RobDroneGoAuth.Dto.Users
 {
     public class UserSessionDto
     {

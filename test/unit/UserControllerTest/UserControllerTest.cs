@@ -2,8 +2,8 @@ using DDDSample1.Domain.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using RobDroneGoAuth.Controllers.User;
-using RobDroneGoAuth.Domain.Users;
-using RobDroneGoAuth.Infrastructure.Users;
+using RobDroneGoAuth.Dto.Users;
+using RobDroneGoAuth.Services.Users;
 
 namespace UserControllerTest;
 

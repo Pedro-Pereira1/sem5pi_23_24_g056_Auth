@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using RobDroneGoAuth.Domain.Users;
-using RobDroneGoAuth.Infrastructure.Users;
+using RobDroneGoAuth.Dto.Users;
+using RobDroneGoAuth.Services.Users;
 
 namespace RobDroneGoAuth.Controllers.User
 {

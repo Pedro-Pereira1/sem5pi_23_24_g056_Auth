@@ -1,5 +1,4 @@
 using DDDSample1.Domain.Shared;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using RobDroneGoAuth.Domain.Users;
 
 namespace UserTest;
