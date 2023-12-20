@@ -1,0 +1,13 @@
+@startuml
+
+() "UI Admin" as SM
+
+component RDG [
+  <<component>>
+  **RobDroneGo**
+]
+
+SM -d- RDG
+
+@enduml
+
