@@ -119,7 +119,7 @@ namespace RobDroneGoAuth.Services.Users
                     throw new BusinessRuleValidationException("Email already in use");
                 }
 
-                var user = User.Create(dto.Name, dto.Email, "999999999", dto.PhoneNumber, dto.Password, dto.Role);
+                var user = User.Create(dto.Name, dto.Email, "999999999", dto.PhoneNumber, dto.Password, Enum.GetName(typeof(RoleType), dto.Role));
                 await this._userRepository.AddAsync(user);
                 await this._unitOfWork.CommitAsync();
                 return new UserDto(user.Name.NameString, user.Id.Value, user.PhoneNumber.Number, user.TaxPayerNumber.Number);
