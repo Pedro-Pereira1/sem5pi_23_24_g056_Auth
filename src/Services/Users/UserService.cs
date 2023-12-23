@@ -97,7 +97,7 @@ namespace RobDroneGoAuth.Services.Users
             };
             var key = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value!));
-            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
+            var credentials = new SigningCredentials(key, "HS256");
             var jwt = new JwtSecurityToken(
                 claims: claims,
                 expires: DateTime.Now.AddDays(1),
