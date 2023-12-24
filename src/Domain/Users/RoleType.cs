@@ -3,7 +3,8 @@ namespace RobDroneGoAuth.Domain.Users {
         Admin,
         CampusManager,
         TaskManager,
-        FleetManager
+        FleetManager,
+        Utente
     }
 }
 

@@ -6,6 +6,11 @@ namespace RobDroneGoAuth.Domain.Users
     {
         public static Role Create(string value)
         {
+            RoleType roleType;
+            if (!Enum.TryParse(value, out roleType))
+            {
+                throw new BusinessRuleValidationException("Invalid role.");
+            }
             return new Role(value);
         }
 
