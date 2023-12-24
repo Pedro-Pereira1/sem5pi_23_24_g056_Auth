@@ -41,7 +41,7 @@ namespace RobDroneGoAuth.Services.Users
                 var user = User.Create(dto.Name, dto.Email, dto.TaxPayerNumber, dto.PhoneNumber, dto.Password, _defaultRole);
                 await this._userRepository.AddAsync(user);
                 await this._unitOfWork.CommitAsync();
-                return new UserDto(user.Name.NameString, user.Id.Value, user.PhoneNumber.Number, user.TaxPayerNumber.Number);
+                return new UserDto(user.Name.NameString, user.Id.Value, user.PhoneNumber.Number, user.TaxPayerNumber.Number, user.Role.ToString());
             }
             catch (BusinessRuleValidationException e)
             {
@@ -106,7 +106,7 @@ namespace RobDroneGoAuth.Services.Users
             return tokenHandler.WriteToken(jwt);
         }
 
-        public async Task<UserDto> RegisterBackofficeUser(CreateBackofficeUserDto dto)
+        public async Task<UserDto> CreateBackofficeUser(CreateBackofficeUserDto dto)
         {
             try
             {
@@ -122,7 +122,7 @@ namespace RobDroneGoAuth.Services.Users
                 var user = User.Create(dto.Name, dto.Email, "999999999", dto.PhoneNumber, dto.Password, Enum.GetName(typeof(RoleType), dto.Role));
                 await this._userRepository.AddAsync(user);
                 await this._unitOfWork.CommitAsync();
-                return new UserDto(user.Name.NameString, user.Id.Value, user.PhoneNumber.Number, user.TaxPayerNumber.Number);
+                return new UserDto(user.Name.NameString, user.Id.Value, user.PhoneNumber.Number, user.TaxPayerNumber.Number, user.Role.Value);
             }
             catch (BusinessRuleValidationException e)
             {
