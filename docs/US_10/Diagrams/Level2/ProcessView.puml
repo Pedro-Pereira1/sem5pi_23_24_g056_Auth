@@ -1,0 +1,19 @@
+@startuml ProcessView
+
+autonumber
+
+participant Visualization
+participant "Auth" as GI
+
+?o-> Visualization: Create backoffice user
+activate Visualization
+
+Visualization -> GI: POST backoffice user
+activate GI
+GI --> Visualization: backoffice user
+deactivate GI
+
+<-- Visualization: Inform Success
+deactivate Visualization
+
+@enduml

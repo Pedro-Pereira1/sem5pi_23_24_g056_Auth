@@ -5,7 +5,7 @@ autonumber
 actor "Admin" as Adm
 
 activate Adm
-Adm -> System: Create new user 
+Adm -> System: Create new backoffice user 
 activate System
 Adm <-- System: Inform Success
 deactivate System
