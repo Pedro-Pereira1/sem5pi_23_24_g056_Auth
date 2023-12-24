@@ -60,13 +60,13 @@ public class UserServiceTest
     }
 
     [TestMethod]
-    public async Task Check_Valid_Values_For_BackofficeUser_Creation()
+    public async Task Check_Valid_Role_For_BackofficeUser_Creation()
     {
         string name = "Jose Gouveia";
         string email = "1211089@isep.ipp.pt";
         string phoneNumber = "930597721";
         string password = "1211089aA!";
-        int role = 0;
+        string role = "Admin";
 
         CreateBackofficeUserDto dto = new CreateBackofficeUserDto(name, email, phoneNumber, password, role);
         _userRepository.Setup(x => x.AddAsync(It.IsAny<User>()));
@@ -87,7 +87,7 @@ public class UserServiceTest
         string email = "1211089@isep.ipp.pt";
         string phoneNumber = "930597721";
         string password = "1211089aA!";
-        int role = 4;
+        string role = "Manager";
 
         CreateBackofficeUserDto dto = new CreateBackofficeUserDto(name, email, phoneNumber, password, role);
 

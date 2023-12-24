@@ -41,7 +41,7 @@ public class UserControllerTest
         string phoneNumber = "930597721";
         string taxPayerNumber = "290088763";
         string password = "1211089aA!";
-        string role = "utente";
+        string role = "Utente";
 
         CreateUserDto dto = new CreateUserDto(name, email, phoneNumber, taxPayerNumber, password);
         UserDto userDto = new UserDto(name, email, phoneNumber, taxPayerNumber, role);
@@ -59,11 +59,11 @@ public class UserControllerTest
     }
 
     [TestMethod]
-    public async Task Check_Invalid_Values_For_BackofficeUser_Creation()
+    public async Task Check_Invalid_Role_For_BackofficeUser_Creation()
     {
         Mock<IUserService> userService = new Mock<IUserService>();
         userService.Setup(x => x.CreateBackofficeUser(It.IsAny<CreateBackofficeUserDto>()))
-            .ThrowsAsync(new BusinessRuleValidationException("Email must contain '@'."));
+            .ThrowsAsync(new BusinessRuleValidationException("Invalid role."));
 
         UserController userController = new UserController(userService.Object);
 
@@ -71,7 +71,7 @@ public class UserControllerTest
         string email = "1211089isep.ipp.pt";
         string phoneNumber = "930597721";
         string password = "1211089aA!";
-        int role = 4;
+        string role = "Manager";
 
         CreateBackofficeUserDto dto = new CreateBackofficeUserDto(name, email, phoneNumber, password, role);
         var result = await userController.CreateBackofficeUser(dto);
@@ -86,7 +86,7 @@ public class UserControllerTest
         string email = "1211089@isep.ipp.pt";
         string phoneNumber = "930597721";
         string password = "1211089aA!";
-        int role = 0;
+        string role = "Admin";
 
         CreateBackofficeUserDto dto = new CreateBackofficeUserDto(name, email, phoneNumber, password, role);
         UserDto userDto = new UserDto(name, email, phoneNumber, "999999999", "Admin");
