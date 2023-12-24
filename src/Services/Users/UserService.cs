@@ -111,7 +111,7 @@ namespace RobDroneGoAuth.Services.Users
         {
             try
             {
-                _logger.LogInformation("UserService: Registering user\n\n");
+                _logger.LogInformation("UserService: Creating backoffice user\n\n");
 
                 var email = Email.Create(dto.Email);
                 var userInDb = await this._userRepository.GetByIdAsync(email);
@@ -127,12 +127,12 @@ namespace RobDroneGoAuth.Services.Users
             }
             catch (BusinessRuleValidationException e)
             {
-                _logger.LogWarning("UserService: Error has occurred while registering user: " + e.Message + "\n\n");
+                _logger.LogWarning("UserService: Error has occurred while creating backoffice user: " + e.Message + "\n\n");
                 throw new BusinessRuleValidationException(e.Message);
             }
             catch (Exception e)
             {
-                _logger.LogError("UserService: Error has occurred while registering user: " + e.Message + "\n\n");
+                _logger.LogError("UserService: Error has occurred while creating backoffice user: " + e.Message + "\n\n");
                 throw new Exception(e.Message);
             }
         }
