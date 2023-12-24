@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+participant UserController
+participant UserService
+participant UserRepository
+participant User
+participant DbSetUsers
+
+?o-> UserController: POST backoffice user
+activate UserController
+
+UserController -> UserService: CreateBackofficeUser(BackofficeUserDto)
+activate UserService
+
+UserService -> User: create()
+
+UserService -> UserRepository: save(User)
+activate UserRepository
+
+UserRepository -> DbSetUsers: Add(User)
+activate DbSetUsers
+
+DbSetUsers --> UserRepository
+deactivate DbSetUsers
+
+
+UserRepository --> UserService
+deactivate UserRepository
+
+UserService --> UserController: UserDto
+deactivate UserService
+
+<-- UserController: backoffice user
+
+deactivate UserController
+
+@enduml
