@@ -9,7 +9,7 @@ namespace RobDroneGoAuth.Domain.Users
             return new Role(value);
         }
 
-        private Role(string value)
+        protected Role(string value)
         {
             Value = value;
         }
