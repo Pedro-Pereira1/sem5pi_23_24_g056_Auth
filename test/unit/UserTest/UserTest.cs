@@ -95,6 +95,25 @@ public class UserTest
     }
 
     [TestMethod]
+    [DataRow("Manager")]
+    public void Check_Invalid_Role(string value)
+    {
+        Assert.ThrowsException<BusinessRuleValidationException>(() => Role.Create(value));
+    }
+
+    [TestMethod]
+    [DataRow("Admin")]
+    [DataRow("CampusManager")]
+    [DataRow("FleetManager")]
+    [DataRow("TaskManager")]
+    [DataRow("Utente")]
+    public void Check_Valid_Role(string value)
+    {
+        Role role = Role.Create(value);
+        Assert.AreEqual(value, role.Value);
+    }
+
+    [TestMethod]
     public void Check_Invalid_User()
     {
         string name = "Jose Gouveia";
@@ -102,7 +121,7 @@ public class UserTest
         string phoneNumber = "930597721";
         string taxPayerNumber = "290088763";
         string password = "1211089aA!";
-        string role = "utente";
+        string role = "Utente";
 
         Assert.ThrowsException<BusinessRuleValidationException>(() => User.Create(name, email, taxPayerNumber, phoneNumber, password, role));
     }
@@ -115,7 +134,7 @@ public class UserTest
         string phoneNumber = "930597721";
         string taxPayerNumber = "290088763";
         string password = "1211089aA!";
-        string role = "utente";
+        string role = "Utente";
 
         User user = User.Create(name, email, taxPayerNumber, phoneNumber, password, role);
         Assert.AreEqual(name, user.Name.NameString);

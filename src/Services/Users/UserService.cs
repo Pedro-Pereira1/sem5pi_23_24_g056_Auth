@@ -14,7 +14,7 @@ namespace RobDroneGoAuth.Services.Users
         private readonly IUserRepository _userRepository;
         private readonly ILogger<UserService> _logger;
         private readonly IConfiguration _configuration;
-        private readonly string _defaultRole = "utente";
+        private readonly string _defaultRole = "Utente";
 
         public UserService(ILogger<UserService> logger, IUnitOfWork unitOfWork,
          IUserRepository userRepository, IConfiguration configuration)
@@ -41,7 +41,7 @@ namespace RobDroneGoAuth.Services.Users
                 var user = User.Create(dto.Name, dto.Email, dto.TaxPayerNumber, dto.PhoneNumber, dto.Password, _defaultRole);
                 await this._userRepository.AddAsync(user);
                 await this._unitOfWork.CommitAsync();
-                return new UserDto(user.Name.NameString, user.Id.Value, user.PhoneNumber.Number, user.TaxPayerNumber.Number);
+                return new UserDto(user.Name.NameString, user.Id.Value, user.PhoneNumber.Number, user.TaxPayerNumber.Number, user.Role.Value);
             }
             catch (BusinessRuleValidationException e)
             {
@@ -105,6 +105,36 @@ namespace RobDroneGoAuth.Services.Users
             );
             var tokenHandler = new JwtSecurityTokenHandler();
             return tokenHandler.WriteToken(jwt);
+        }
+
+        public async Task<UserDto> CreateBackofficeUser(CreateBackofficeUserDto dto)
+        {
+            try
+            {
+                _logger.LogInformation("UserService: Registering user\n\n");
+
+                var email = Email.Create(dto.Email);
+                var userInDb = await this._userRepository.GetByIdAsync(email);
+                if (userInDb != null)
+                {
+                    throw new BusinessRuleValidationException("Email already in use");
+                }
+
+                var user = User.Create(dto.Name, dto.Email, "999999999", dto.PhoneNumber, dto.Password, dto.Role);
+                await this._userRepository.AddAsync(user);
+                await this._unitOfWork.CommitAsync();
+                return new UserDto(user.Name.NameString, user.Id.Value, user.PhoneNumber.Number, user.TaxPayerNumber.Number, user.Role.Value);
+            }
+            catch (BusinessRuleValidationException e)
+            {
+                _logger.LogWarning("UserService: Error has occurred while registering user: " + e.Message + "\n\n");
+                throw new BusinessRuleValidationException(e.Message);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError("UserService: Error has occurred while registering user: " + e.Message + "\n\n");
+                throw new Exception(e.Message);
+            }
         }
     }
 }

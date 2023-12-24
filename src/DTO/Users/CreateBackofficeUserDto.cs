@@ -1,19 +1,19 @@
 namespace RobDroneGoAuth.Dto.Users
 {
-    public class UserDto
+    public class CreateBackofficeUserDto
     {
         public string Name { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public string TaxPayerNumber { get; set; }
+        public string Password { get; set; }
         public string Role { get; set; }
 
-        public UserDto(string name, string email, string phoneNumber, string taxPayerNumber, string role)
+        public CreateBackofficeUserDto(string name, string email, string phoneNumber, string password, string role)
         {
             this.Name = name;
             this.Email = email;
             this.PhoneNumber = phoneNumber;
-            this.TaxPayerNumber = taxPayerNumber;
+            this.Password = password;
             this.Role = role;
         }
 

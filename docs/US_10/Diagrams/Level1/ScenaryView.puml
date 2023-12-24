@@ -1,0 +1,14 @@
+@startuml
+left to right direction
+
+skinparam actorStyle awesome
+
+actor "UI Admin" as ADM
+
+package  RobDroneGo  {
+  usecase "Create User" as UC46
+}
+
+ADM --> UC46
+
+@enduml
