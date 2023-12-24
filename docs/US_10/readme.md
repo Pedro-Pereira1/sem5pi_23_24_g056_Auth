@@ -116,19 +116,270 @@ database.
 
 
 ### 4.2. Applied Patterns
-
+* Controller
+* Service
+* Dto
 
 ### 4.3. Tests
 
-```ts
+#### UserController Unit Testing
+```c#
+    [TestMethod]
+    public async Task Check_Invalid_Role_For_BackofficeUser_Creation()
+    {
+        Mock<IUserService> userService = new Mock<IUserService>();
+        userService.Setup(x => x.CreateBackofficeUser(It.IsAny<CreateBackofficeUserDto>()))
+            .ThrowsAsync(new BusinessRuleValidationException("Invalid role."));
+
+        UserController userController = new UserController(userService.Object);
+
+        string name = "Jose Gouveia";
+        string email = "1211089isep.ipp.pt";
+        string phoneNumber = "930597721";
+        string password = "1211089aA!";
+        string role = "Manager";
+
+        CreateBackofficeUserDto dto = new CreateBackofficeUserDto(name, email, phoneNumber, password, role);
+        var result = await userController.CreateBackofficeUser(dto);
+
+        Assert.IsInstanceOfType(result.Result, typeof(BadRequestObjectResult));
+    }
+
+    [TestMethod]
+    public async Task Check_Valid_Role_For_BackofficeUser_Creation()
+    {
+        string name = "Jose Gouveia";
+        string email = "1211089@isep.ipp.pt";
+        string phoneNumber = "930597721";
+        string password = "1211089aA!";
+        string role = "Admin";
+
+        CreateBackofficeUserDto dto = new CreateBackofficeUserDto(name, email, phoneNumber, password, role);
+        UserDto userDto = new UserDto(name, email, phoneNumber, "999999999", "Admin");
+
+        Mock<IUserService> userService = new Mock<IUserService>();
+        userService.Setup(x => x.CreateBackofficeUser(It.IsAny<CreateBackofficeUserDto>()))
+            .ReturnsAsync(userDto);
+
+        UserController userController = new UserController(userService.Object);
+
+        var result = await userController.CreateBackofficeUser(dto);
+
+        Assert.IsInstanceOfType(result.Result, typeof(OkObjectResult));
+        Assert.AreEqual(userDto, ((OkObjectResult)result.Result).Value);
+    }
+```
+
+#### UserService Unit Testing
+```c#
+    [TestMethod]
+    public async Task Check_Valid_Role_For_BackofficeUser_Creation()
+    {
+        string name = "Jose Gouveia";
+        string email = "1211089@isep.ipp.pt";
+        string phoneNumber = "930597721";
+        string password = "1211089aA!";
+        string role = "Admin";
+
+        CreateBackofficeUserDto dto = new CreateBackofficeUserDto(name, email, phoneNumber, password, role);
+        _userRepository.Setup(x => x.AddAsync(It.IsAny<User>()));
+        _unitOfWork.Setup(x => x.CommitAsync());
+
+        var user = await _userService.CreateBackofficeUser(dto);
+
+        Assert.AreEqual(name, user.Name);
+        Assert.AreEqual(email, user.Email);
+        Assert.AreEqual(phoneNumber, user.PhoneNumber);
+        Assert.AreEqual("Admin", user.Role);
+    }
+
+    [TestMethod]
+    public async Task Check_Invalid_Role_For_BackofficeUser_Creation()
+    {
+        string name = "Jose Gouveia";
+        string email = "1211089@isep.ipp.pt";
+        string phoneNumber = "930597721";
+        string password = "1211089aA!";
+        string role = "Manager";
+
+        CreateBackofficeUserDto dto = new CreateBackofficeUserDto(name, email, phoneNumber, password, role);
+
+        try
+        {
+            var user = await _userService.CreateBackofficeUser(dto);
+        }
+        catch (Exception e)
+        {
+            Assert.IsTrue(e is BusinessRuleValidationException);
+        }
+    }
 
 ```
 
+#### UserService and UserController Integration Testing
+```c#
+    [TestMethod]
+    public async Task Check_Invalid_Role_For_BackofficeUser_Creation()
+    {
+        Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
+        Mock<IUnitOfWork> unitOfWork = new Mock<IUnitOfWork>();
+        Mock<ILogger<UserService>> logger = new Mock<ILogger<UserService>>();
+        Mock<IConfiguration> configuration = new Mock<IConfiguration>();
+
+        userRepository.Setup(x => x.AddAsync(It.IsAny<User>()));
+        unitOfWork.Setup(x => x.CommitAsync());
+
+        IUserService userService = new UserService(logger.Object, unitOfWork.Object, userRepository.Object, configuration.Object);
+
+        UserController userController = new UserController(userService);
+
+        string name = "Jose Gouveia";
+        string email = "1211089isep.ipp.pt";
+        string phoneNumber = "930597721";
+        string password = "1211089aA!";
+        string role = "Manager";
+
+        CreateBackofficeUserDto dto = new CreateBackofficeUserDto(name, email, phoneNumber, password, role);
+        var result = await userController.CreateBackofficeUser(dto);
+
+        Assert.IsInstanceOfType(result.Result, typeof(BadRequestObjectResult));
+    }
+
+    [TestMethod]
+    public async Task Check_Valid_Role_For_BackofficeUser_Creation()
+    {
+        Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
+        Mock<IUnitOfWork> unitOfWork = new Mock<IUnitOfWork>();
+        Mock<ILogger<UserService>> logger = new Mock<ILogger<UserService>>();
+        Mock<IConfiguration> configuration = new Mock<IConfiguration>();
+        userRepository.Setup(x => x.AddAsync(It.IsAny<User>()));
+        unitOfWork.Setup(x => x.CommitAsync());
+
+        IUserService userService = new UserService(logger.Object, unitOfWork.Object, userRepository.Object, configuration.Object);
+        UserController userController = new UserController(userService);
+
+        string name = "Jose Gouveia";
+        string email = "1211089@isep.ipp.pt";
+        string phoneNumber = "930597721";
+        string password = "1211089aA!";
+        string role = "Admin";
+        CreateBackofficeUserDto dto = new CreateBackofficeUserDto(name, email, phoneNumber, password, role);
+        UserDto userDto = new UserDto(name, email, phoneNumber, "999999999", "Admin");
+
+        var result = await userController.CreateBackofficeUser(dto);
+
+        Assert.IsInstanceOfType(result.Result, typeof(OkObjectResult));
+        Assert.AreEqual(((OkObjectResult)result.Result).Value.ToString(), userDto.ToString());
+    }
+
+```
 
 ## 5. Implementation
+#### UserController
+```c#
+using Microsoft.AspNetCore.Mvc;
+using RobDroneGoAuth.Dto.Users;
+using RobDroneGoAuth.Services.Users;
+
+namespace RobDroneGoAuth.Controllers.User
+{
+    [Route("api/users")]
+    [ApiController]
+    public class UserController : ControllerBase
+    {
+        private readonly IUserService _userService;
+        public UserController(IUserService userService)
+        {
+            this._userService = userService;
+        }
+
+        (...)
+
+        [HttpPost("backoffice")]
+        public async Task<ActionResult<UserDto>> CreateBackofficeUser([FromBody] CreateBackofficeUserDto dto)
+        {
+            try
+            {
+                var user = await this._userService.CreateBackofficeUser(dto);
+                return Ok(user);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+    }
+}
+
+```
+
+#### UserService
+```c#
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using DDDSample1.Domain.Shared;
+using Microsoft.IdentityModel.Tokens;
+using RobDroneGoAuth.Domain.Users;
+using RobDroneGoAuth.Dto.Users;
+
+namespace RobDroneGoAuth.Services.Users
+{
+    public class UserService : IUserService
+    {
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUserRepository _userRepository;
+        private readonly ILogger<UserService> _logger;
+        private readonly IConfiguration _configuration;
+        private readonly string _defaultRole = "Utente";
+
+        public UserService(ILogger<UserService> logger, IUnitOfWork unitOfWork,
+         IUserRepository userRepository, IConfiguration configuration)
+        {
+            this._logger = logger;
+            this._unitOfWork = unitOfWork;
+            this._userRepository = userRepository;
+            this._configuration = configuration;
+        }
+
+        (...)
+
+        public async Task<UserDto> CreateBackofficeUser(CreateBackofficeUserDto dto)
+        {
+            try
+            {
+                _logger.LogInformation("UserService: Creating backoffice user\n\n");
+
+                var email = Email.Create(dto.Email);
+                var userInDb = await this._userRepository.GetByIdAsync(email);
+                if (userInDb != null)
+                {
+                    throw new BusinessRuleValidationException("Email already in use");
+                }
+
+                var user = User.Create(dto.Name, dto.Email, "999999999", dto.PhoneNumber, dto.Password, dto.Role);
+                await this._userRepository.AddAsync(user);
+                await this._unitOfWork.CommitAsync();
+                return new UserDto(user.Name.NameString, user.Id.Value, user.PhoneNumber.Number, user.TaxPayerNumber.Number, user.Role.Value);
+            }
+            catch (BusinessRuleValidationException e)
+            {
+                _logger.LogWarning("UserService: Error has occurred while creating backoffice user: " + e.Message + "\n\n");
+                throw new BusinessRuleValidationException(e.Message);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError("UserService: Error has occurred while creating backoffice user: " + e.Message + "\n\n");
+                throw new Exception(e.Message);
+            }
+        }
+    }
+}
+
+```
 
 ## 6. Integration/Demonstration
-
+To use this functionality it is necessary to be logged in with an Admin account in the web app. Then go to the Backoffice Users menu and fill the form with the requested parameters: Name, Email, Phone Number, Password and Role. Then click create and an http POST request will be sent to the Auth module to create the requested backoffice user.
 ## 7. Observations
 
 No additional observations.
