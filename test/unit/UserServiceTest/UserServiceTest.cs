@@ -58,4 +58,46 @@ public class UserServiceTest
         Assert.AreEqual(user.PhoneNumber, phoneNumber);
         Assert.AreEqual(user.TaxPayerNumber, taxPayerNumber);
     }
+
+    [TestMethod]
+    public async Task Check_Valid_Values_For_BackofficeUser_Creation()
+    {
+        string name = "Jose Gouveia";
+        string email = "1211089@isep.ipp.pt";
+        string phoneNumber = "930597721";
+        string password = "1211089aA!";
+        int role = 0;
+
+        CreateBackofficeUserDto dto = new CreateBackofficeUserDto(name, email, phoneNumber, password, role);
+        _userRepository.Setup(x => x.AddAsync(It.IsAny<User>()));
+        _unitOfWork.Setup(x => x.CommitAsync());
+
+        var user = await _userService.CreateBackofficeUser(dto);
+
+        Assert.AreEqual(name, user.Name);
+        Assert.AreEqual(email, user.Email);
+        Assert.AreEqual(phoneNumber, user.PhoneNumber);
+        Assert.AreEqual("Admin", user.Role);
+    }
+
+    [TestMethod]
+    public async Task Check_Invalid_Role_For_BackofficeUser_Creation()
+    {
+        string name = "Jose Gouveia";
+        string email = "1211089@isep.ipp.pt";
+        string phoneNumber = "930597721";
+        string password = "1211089aA!";
+        int role = 4;
+
+        CreateBackofficeUserDto dto = new CreateBackofficeUserDto(name, email, phoneNumber, password, role);
+
+        try
+        {
+            var user = await _userService.CreateBackofficeUser(dto);
+        }
+        catch (Exception e)
+        {
+            Assert.IsTrue(e is BusinessRuleValidationException);
+        }
+    }
 }
