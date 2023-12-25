@@ -110,9 +110,13 @@ database.
 
 ![ImplementationView](Diagrams/Level3/ImplementationView.svg)
 
-###### ProcessView:
+###### ProcessView (Visualization Module):
 
-![ProcessView](Diagrams/Level3/ProcessView.svg)
+![ProcessView1](Diagrams/Level3/Visualization/ProcessView.svg)
+
+###### ProcessView (Auth Module):
+
+![ProcessView2](Diagrams/Level3/ProcessView.svg)
 
 
 ### 4.2. Applied Patterns
