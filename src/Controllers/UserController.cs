@@ -55,5 +55,23 @@ namespace RobDroneGoAuth.Controllers.User
                 return BadRequest(e.Message);
             }
         }
+
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<UserDto>> GetUserInfo(string id){
+            Console.WriteLine("sono qui");
+            try
+            {
+                var user = await this._userService.GetUserInfo(id);
+                return Ok(user);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+        
+           
+
     }
 }
