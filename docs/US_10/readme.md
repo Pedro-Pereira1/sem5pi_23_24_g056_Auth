@@ -110,9 +110,13 @@ database.
 
 ![ImplementationView](Diagrams/Level3/ImplementationView.svg)
 
-###### ProcessView:
+###### ProcessView (Visualization Module):
 
-![ProcessView](Diagrams/Level3/ProcessView.svg)
+![ProcessView1](Diagrams/Level3/Visualization/ProcessView.svg)
+
+###### ProcessView (Auth Module):
+
+![ProcessView2](Diagrams/Level3/ProcessView.svg)
 
 
 ### 4.2. Applied Patterns
@@ -121,7 +125,85 @@ database.
 * Dto
 
 ### 4.3. Tests
+### Visualization Module
+``` typescript
+describe('Create Backoffice User', function () {
 
+    beforeEach(() => {
+        cy.intercept('POST', 'https://localhost:7094/api/users/backoffice', {
+            statusCode: 200,
+            body:
+            {
+                "name": "Jose Gouveia",
+                "email": "1211089@isep.ipp.pt",
+                "phoneNumber": "912345678",
+                "role": "Admin"
+            }
+        }).as('create');
+
+
+        localStorage.setItem('token', 'something')
+        cy.visit('/backoffice-user')
+    });
+
+    it('has correct title', function () {
+        cy.get('h1').should('contain', 'Create Backoffice User')
+    })
+
+    it('should display a form', () => {
+        cy.get('form').should('be.visible');
+    });
+
+    it('should display a text input field for entering the User name', () => {
+        cy.get('input[id=name]').should('be.visible');
+        cy.get('input[id=name]').should('have.attr', 'type', 'text');
+    });
+
+    it('should display a text input field for entering the User email', () => {
+        cy.get('input[id=email]').should('be.visible');
+        cy.get('input[id=email]').should('have.attr', 'type', 'text');
+    });
+
+    it('should display a text input field for entering the User phone number', () => {
+        cy.get('input[id=phoneNumber]').should('be.visible');
+        cy.get('input[id=phoneNumber]').should('have.attr', 'type', 'text');
+    });
+
+    it('should display a text input field for entering the User password', () => {
+        cy.get('input[id=password]').should('be.visible');
+        cy.get('input[id=password]').should('have.attr', 'type', 'password');
+    });
+
+    it('should display a select field for entering the User role', () => {
+        cy.get('.form_select').should('be.visible');
+    });
+
+    it('should display a button for creating the user', () => {
+        cy.get('button:contains("Create")').should('be.visible');
+    });
+
+    it('fills and submits the form', function () {
+
+        cy.get('#email').type('1211089@isep.ipp.pt');
+        cy.get('#name').type('Jose Gouveia');
+        cy.get('#phoneNumber').type('912345678');
+        cy.get('#password').type('Eusoujose11!');
+        cy.get('.form_select').select('Admin');
+
+        cy.get('button:contains("Create")').click()
+
+        cy.wait('@create')
+
+        cy.get('#email').should('have.value', '');
+        cy.get('#name').should('have.value', '')
+        cy.get('#phoneNumber').should('have.value', '')
+        cy.get('#password').should('have.value', '')
+        cy.get('.form_select').should('have.value', null)
+    })
+})
+```
+
+### Auth Module
 #### UserController Unit Testing
 ```c#
     [TestMethod]
@@ -275,6 +357,117 @@ database.
 ```
 
 ## 5. Implementation
+### Visualization Module
+### Backoffice User Component
+``` typescript
+@Component({
+  selector: 'app-backoffice-user',
+  templateUrl: './backoffice-user.component.html',
+  styleUrl: './backoffice-user.component.css',
+  providers: [AuthServiceService]
+})
+export class BackofficeUserComponent {
+  constructor(
+    private authService: AuthServiceService
+  ) { }
+
+  roleTypes: string[] = ["Admin", "CampusManager", "FleetManager", "TaskManager"];
+
+  createForm = new FormGroup({
+    name: new FormControl(""),
+    email: new FormControl(""),
+    phoneNumber: new FormControl(""),
+    password: new FormControl(""),
+    role: new FormControl("")
+  });
+
+  onSubmit() {
+    console.log(this.createForm.value);
+    
+    const user: CreateBackofficeUserDto = {
+      name: this.createForm.value.name!,
+      email: this.createForm.value.email!,
+      phoneNumber: Number(this.createForm.value.phoneNumber!),
+      password: this.createForm.value.password!,
+      role: this.createForm.value.role!
+    }
+
+    this.authService.createBackofficeUser(user).subscribe(
+      (user: UserDto) => {
+        window.alert('User created successfully');
+        this.createForm.reset();
+      },
+      (error: any) => {
+        window.alert(error);
+        console.error(error);
+      }
+    );
+  }
+
+
+}
+```
+
+### Auth Service
+``` typescript
+createBackofficeUser(backofficeUserToCreate:    CreateBackofficeUserDto): Observable<UserDto> {
+    const url = this.authUrl + "/" + "backoffice" ;
+    return this.httpClient.post<UserDto>(url, backofficeUserToCreate).pipe(
+      catchError((error: HttpErrorResponse) => {
+        let errorMessage = '';
+        if (error.error instanceof ErrorEvent) {
+          errorMessage = `An error occurred: ${error.error.message}`;
+        } else {
+          errorMessage = `An error occurred: ${error.error}`;
+        }
+        console.error(errorMessage);
+        return throwError(errorMessage);
+      })
+    );
+  }
+```
+
+
+### Create Backoffice User HTML Template
+``` html
+<h1>Create Backoffice User</h1>
+
+<form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+    <div class="form__group field">
+        <input type="text" class="form__field" id='name'  formControlName="name">
+        <label for="name" class="form__label">Name</label>
+    </div>
+    
+    <div class="form__group field">
+        <input type="text" class="form__field" id='email' formControlName="email" required/>
+        <label for="email" class="form__label">Email</label>
+    </div>
+
+    <div class="form__group field">
+        <input type="text" class="form__field" id='phoneNumber' formControlName="phoneNumber">
+        <label for="phoneNumber" class="form__label">Phone Number</label>
+    </div>
+
+    <div class="form__group field">
+        <input type="password" class="form__field" id='password' formControlName="password">
+        <label for="password" class="form__label">Password</label>
+    </div>
+
+    <div class="form__group field">
+        <select class="form_select" formControlName="role" >
+            <option value="">--Select a role--</option>
+            <option *ngFor="let role of roleTypes" [value]="role.toString()">{{ role.toString() }}</option>
+        </select>
+    </div>
+
+    <div>
+        <button>Create</button>
+    </div>
+</form>
+
+````
+
+### Auth Module
 #### UserController
 ```c#
 using Microsoft.AspNetCore.Mvc;

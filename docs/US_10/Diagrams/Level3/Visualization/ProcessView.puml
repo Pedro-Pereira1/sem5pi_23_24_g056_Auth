@@ -1,0 +1,35 @@
+@startuml ProcessView
+
+autonumber
+
+participant ":HTML Template" as Template
+participant ":Component" as Component
+participant ":Service" as Service
+participant ":HTTP Driver" as Driver
+participant ":CreateBackofficeUserDto" as Dto
+participant ":UserDto" as UserDto
+
+
+?o-> Template: Create backoffice user
+activate Template
+Template-> Component: backoffice user data
+activate Component
+Component -> Dto: Parse data to DTO
+Component -> Service: createBackofficeUser(backoffice user dto)
+activate Service
+
+Service -> Driver: http request to create backoffice user
+activate Driver
+Driver ->: POST backoffice user
+Driver --> Service: backoffice user JSON
+deactivate Driver
+Service -> UserDto: Parse JSON to User
+Service --> Component: backoffice user
+deactivate Service
+Component --> Template: Inform Success
+deactivate Component
+<-- Template: Inform Success
+deactivate Template
+
+
+@enduml
