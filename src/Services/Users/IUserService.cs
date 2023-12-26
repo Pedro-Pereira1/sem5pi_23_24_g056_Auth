@@ -7,5 +7,6 @@ namespace RobDroneGoAuth.Services.Users
         Task<UserDto> RegisterUser(CreateUserDto dto);
         Task<UserSessionDto> LogIn(LogInDto dto);
         Task<UserDto> CreateBackofficeUser(CreateBackofficeUserDto dto);
+        Task<UserDto> GetUserInfo(string id);
     }
 }
