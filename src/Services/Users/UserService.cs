@@ -188,5 +188,40 @@ namespace RobDroneGoAuth.Services.Users
                 throw new Exception(e.Message);
             }
         }
+
+        public async Task<UserDto> UpdateUser(UserDto dto){
+            try
+            {
+                _logger.LogInformation("UserService: Getting current user\n\n");
+
+                var email = Email.Create(dto.Email);
+                var user = await this._userRepository.GetByIdAsync(email);
+                if (user == null)
+                {
+                    throw new BusinessRuleValidationException("User not found");
+                } 
+                if(dto.Name != null){
+                    user.UpdateName(Name.Create(dto.Name));
+                }
+                if(dto.PhoneNumber != null){
+                    user.UpdatePhoneNumber(PhoneNumber.Create(dto.PhoneNumber));
+                }
+                if(dto.TaxPayerNumber != null){
+                    user.UpdateTaxPayerNumber(TaxPayerNumber.Create(dto.TaxPayerNumber));
+                }
+                await this._unitOfWork.CommitAsync();
+                return new UserDto(user.Name.NameString, user.Id.Value, user.PhoneNumber.Number, user.TaxPayerNumber.Number, user.Role.Value);
+            }
+            catch (BusinessRuleValidationException e)
+            {
+                _logger.LogWarning("UserService: Error has occurred while getting current user: " + e.Message + "\n\n");
+                throw new BusinessRuleValidationException(e.Message);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError("UserService: Error has occurred while getting current user: " + e.Message + "\n\n");
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
