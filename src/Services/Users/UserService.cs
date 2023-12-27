@@ -161,5 +161,32 @@ namespace RobDroneGoAuth.Services.Users
                 throw new Exception(e.Message);
             }
         }
+
+        public async Task<bool> DeleteUser(string id){
+            try
+            {
+                _logger.LogInformation("UserService: Getting current user\n\n");
+
+                var email = Email.Create(id);
+                var user = await this._userRepository.GetByIdAsync(email);
+                if (user == null)
+                {
+                    throw new BusinessRuleValidationException("User not found");
+                } 
+                this._userRepository.Remove(user);
+                await this._unitOfWork.CommitAsync();
+                return true;
+            }
+            catch (BusinessRuleValidationException e)
+            {
+                _logger.LogWarning("UserService: Error has occurred while getting current user: " + e.Message + "\n\n");
+                throw new BusinessRuleValidationException(e.Message);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError("UserService: Error has occurred while getting current user: " + e.Message + "\n\n");
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
