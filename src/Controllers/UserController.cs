@@ -83,6 +83,19 @@ namespace RobDroneGoAuth.Controllers.User
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpPut("edit")]
+        public async Task<ActionResult<UserDto>> UpdateUser(UserDto dto){
+            try
+            {
+                var user = await this._userService.UpdateUser(dto);
+                return Ok(user);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
            
     }
 }
