@@ -71,7 +71,18 @@ namespace RobDroneGoAuth.Controllers.User
             }
         }
         
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<bool>> DeleteUser(string id){
+            try
+            {
+                var user = await this._userService.DeleteUser(id);
+                return Ok(user);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
            
-
     }
 }
