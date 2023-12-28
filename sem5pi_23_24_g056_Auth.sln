@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "integration", "integration"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegisterUser", "test\integration\RegisterUser\RegisterUser.csproj", "{BABA337D-FD55-4802-801B-CDA929CB0588}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetUserInfo", "test\integration\GetUserInfo\GetUserInfo.csproj", "{142803D7-4E68-4054-846F-D2218A0EF71C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{BABA337D-FD55-4802-801B-CDA929CB0588}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BABA337D-FD55-4802-801B-CDA929CB0588}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BABA337D-FD55-4802-801B-CDA929CB0588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{142803D7-4E68-4054-846F-D2218A0EF71C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{142803D7-4E68-4054-846F-D2218A0EF71C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{142803D7-4E68-4054-846F-D2218A0EF71C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{142803D7-4E68-4054-846F-D2218A0EF71C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,5 +65,6 @@ Global
 		{BCB3D0A7-AB83-4DE2-A887-3EC821A7FE73} = {936DFA88-C7EF-49AD-99C3-E20B33F6CB15}
 		{7172E8FB-566E-457C-9A92-8A62333CC1C1} = {35360068-08E0-4164-949A-D97B3474657F}
 		{BABA337D-FD55-4802-801B-CDA929CB0588} = {7172E8FB-566E-457C-9A92-8A62333CC1C1}
+		{142803D7-4E68-4054-846F-D2218A0EF71C} = {7172E8FB-566E-457C-9A92-8A62333CC1C1}
 	EndGlobalSection
 EndGlobal
