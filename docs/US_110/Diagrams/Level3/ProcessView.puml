@@ -1,0 +1,42 @@
+@startuml
+
+autonumber
+
+participant ":UserRoute" as Floor
+participant ":UserController" as Controller
+participant ":UserService" as Service
+participant ":UserRepo" as Repo
+participant ":UserMap" as Map
+participant ":UserDTO" as DTO
+
+?o->Floor: GET
+activate Floor
+
+Floor -> Controller: getUserInfo(req, res, next)
+activate Controller
+
+Controller -> Service: getUserInfo(id)
+activate Service
+
+Service -> Repo: getUserInfo(id)
+activate Repo
+
+
+Repo --> Service: UserInfo
+deactivate Repo
+Service -> Map: toDTO(UserInfo)
+activate Map
+Map -> DTO:create()
+deactivate Map
+
+Service --> Controller: UserInfoDTO
+deactivate Service
+
+Controller --> Floor: UserInfoDTO
+deactivate Controller
+
+<--Floor: UserInfoDTO
+deactivate Floor
+
+
+@enduml
