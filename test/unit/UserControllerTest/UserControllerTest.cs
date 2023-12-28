@@ -102,4 +102,42 @@ public class UserControllerTest
         Assert.IsInstanceOfType(result.Result, typeof(OkObjectResult));
         Assert.AreEqual(userDto, ((OkObjectResult)result.Result).Value);
     }
+
+    [TestMethod]
+    public async Task GetUserInfo_ReturnsOkResult()
+    {
+        string name = "Jose Gouveia";
+        string email = "1211089@isep.ipp.pt";
+        string phoneNumber = "930597721";
+        string password = "1211089aA!";
+        string role = "Admin";     
+        string id = email;
+
+        var userServiceMock = new Mock<IUserService>();
+        var userDto = new UserDto(name, email, phoneNumber, "999999999", "Admin");
+        userServiceMock.Setup(x => x.GetUserInfo(id)).ReturnsAsync(userDto);
+        var userController = new UserController(userServiceMock.Object);
+
+        var result = await userController.GetUserInfo(id);
+
+        Assert.IsInstanceOfType(result.Result, typeof(OkObjectResult));
+        var okResult = (OkObjectResult)result.Result;
+        Assert.AreEqual(userDto, okResult.Value);
+    }
+
+    [TestMethod]
+    public async Task GetUserInfo_ReturnsBadRequestResult()
+    {
+        string id = "1211089@isep.ipp.pt";
+        var userServiceMock = new Mock<IUserService>();
+        userServiceMock.Setup(x => x.GetUserInfo(id)).ThrowsAsync(new Exception("Some error occurred."));
+        var userController = new UserController(userServiceMock.Object);
+
+        var result = await userController.GetUserInfo(id);
+
+        Assert.IsInstanceOfType(result.Result, typeof(BadRequestObjectResult));
+        var badRequestResult = (BadRequestObjectResult)result.Result;
+        Assert.AreEqual("Some error occurred.", badRequestResult.Value);
+    }
+
 }
