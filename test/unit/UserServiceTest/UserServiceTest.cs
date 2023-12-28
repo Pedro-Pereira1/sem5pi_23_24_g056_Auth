@@ -138,4 +138,26 @@ public class UserServiceTest
 
         await Assert.ThrowsExceptionAsync<Exception>(() => _userService.GetUserInfo(id));
     }
+
+    [TestMethod]
+    public async Task Check_Deletion_Of_User()
+    {
+        var userId = "jocas@isep.ipp.pt";
+        var user = User.Create("Jocas", userId, "290088123", "912345678", "123456789aA!", "Utente");
+        _userRepository.Setup(repo => repo.GetByIdAsync(It.IsAny<Email>())).ReturnsAsync(user);
+        var deleted = await _userService.DeleteUser(user.Id.Value);
+
+        Assert.IsTrue(deleted);
+    }
+
+    [TestMethod]
+    public async Task Check_Deletion_Of_User_With_Invalid_Id()
+    {
+        var userId = "jocas@isep.ipp.pt";
+        var email = Email.Create(userId);
+        _userRepository.Setup(x => x.GetByIdAsync(email)).ReturnsAsync((User)null);
+
+        await Assert.ThrowsExceptionAsync<BusinessRuleValidationException>(() => _userService.DeleteUser(userId));
+    }
+
 }
