@@ -140,4 +140,35 @@ public class UserControllerTest
         Assert.AreEqual("Some error occurred.", badRequestResult.Value);
     }
 
+    [TestMethod]
+    public async Task Check_DeleteUser_ReturnsOkResult()
+    {
+        string id = "1211089@isep.ipp.pt";
+
+        var userServiceMock = new Mock<IUserService>();
+        userServiceMock.Setup(x => x.DeleteUser(id)).ReturnsAsync(true);
+        var userController = new UserController(userServiceMock.Object);
+
+        var result = await userController.DeleteUser(id);
+
+        Assert.IsInstanceOfType(result.Result, typeof(OkObjectResult));
+        var okResult = (OkObjectResult)result.Result;
+        Assert.AreEqual(true, okResult.Value);
+    }
+
+    [TestMethod]
+    public async Task Check_DeleteUser_ReturnsBadRequestResult()
+    {
+        string id = "1211089@isep.ipp.pt";
+
+        var userServiceMock = new Mock<IUserService>();
+        userServiceMock.Setup(x => x.DeleteUser(id)).ThrowsAsync(new Exception("Some error occurred."));
+        var userController = new UserController(userServiceMock.Object);
+
+        var result = await userController.DeleteUser(id);
+
+        Assert.IsInstanceOfType(result.Result, typeof(BadRequestObjectResult));
+        var badRequestResult = (BadRequestObjectResult)result.Result;
+        Assert.AreEqual("Some error occurred.", badRequestResult.Value);
+    }
 }
