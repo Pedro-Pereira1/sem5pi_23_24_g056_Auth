@@ -160,4 +160,40 @@ public class UserServiceTest
         await Assert.ThrowsExceptionAsync<BusinessRuleValidationException>(() => _userService.DeleteUser(userId));
     }
 
+    [TestMethod]
+    public async Task Check_Update_Of_User()
+    {
+        var userId = "jocas@isep.ipp.pt";
+        var user = User.Create("Jocas", userId, "912345678", "912345678", "123456789aA!", "Utente");
+        _userRepository.Setup(repo => repo.GetByIdAsync(It.IsAny<Email>())).ReturnsAsync(user);
+
+        string newName = "Jose AAAAAA";
+        string newPhoneNumber = "987654321";
+        string newTaxPayerNumber = "290088123";
+
+        UserDto updateDto = new UserDto(newName,user.Id.Value, newPhoneNumber, newTaxPayerNumber, user.Role.Value);
+
+        var updated = await _userService.UpdateUser(updateDto);
+
+        Assert.AreEqual(updated.Name, newName);
+        Assert.AreEqual(updated.PhoneNumber, newPhoneNumber);
+        Assert.AreEqual(updated.TaxPayerNumber, newTaxPayerNumber);
+    }
+
+    [TestMethod]
+    public async Task Check_Update_Of_User_With_Invalid_Id()
+    {
+        var userId = "jocas@isep.ipp.pt";
+        
+        var email = Email.Create(userId);
+        _userRepository.Setup(x => x.GetByIdAsync(email)).ReturnsAsync((User)null);
+
+        string newName = "Jose AAAAAA";
+        string newPhoneNumber = "987654321";
+        string newTaxPayerNumber = "290088123";
+
+        UserDto updateDto = new UserDto(newName, userId, newPhoneNumber, newTaxPayerNumber, "Utente");
+
+        await Assert.ThrowsExceptionAsync<BusinessRuleValidationException>(() => _userService.UpdateUser(updateDto));
+    }
 }
