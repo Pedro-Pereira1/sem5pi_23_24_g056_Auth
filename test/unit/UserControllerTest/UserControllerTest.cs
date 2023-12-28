@@ -171,4 +171,46 @@ public class UserControllerTest
         var badRequestResult = (BadRequestObjectResult)result.Result;
         Assert.AreEqual("Some error occurred.", badRequestResult.Value);
     }
+
+    [TestMethod]
+    public async Task Check_UpdateUser_ReturnsOkResult()
+    {
+        string name = "Jose Gouveia";
+        string email = "1211089@isep.ipp.pt";
+        string phoneNumber = "930597721";
+        string taxPayerNumber = "290088763";
+        string password = "1211089aA!";
+
+        var userServiceMock = new Mock<IUserService>();
+        var userDto = new UserDto(name, email, phoneNumber, taxPayerNumber, "Admin");
+        userServiceMock.Setup(x => x.UpdateUser(userDto)).ReturnsAsync(userDto);
+        var userController = new UserController(userServiceMock.Object);
+
+        var result = await userController.UpdateUser(userDto);
+
+        Assert.IsInstanceOfType(result.Result, typeof(OkObjectResult));
+        var okResult = (OkObjectResult)result.Result;
+        Assert.AreEqual(userDto, okResult.Value);
+    }
+
+    [TestMethod]
+    public async Task Check_UpdateUser_ReturnsBadRequestResult()
+    {
+        string name = "Jose Gouveia";
+        string email = "1211089@isep.ipp.pt";
+        string phoneNumber = "930597721";
+        string taxPayerNumber = "290088763";
+        string password = "1211089aA!";
+        
+        var userServiceMock = new Mock<IUserService>();
+        var userDto = new UserDto(name, email, phoneNumber, taxPayerNumber, "Admin");
+        userServiceMock.Setup(x => x.UpdateUser(userDto)).ThrowsAsync(new Exception("Some error occurred."));
+        var userController = new UserController(userServiceMock.Object);
+
+        var result = await userController.UpdateUser(userDto);
+
+        Assert.IsInstanceOfType(result.Result, typeof(BadRequestObjectResult));
+        var badRequestResult = (BadRequestObjectResult)result.Result;
+        Assert.AreEqual("Some error occurred.", badRequestResult.Value);
+    }
 }
