@@ -10,9 +10,6 @@
 * create a system user, indicating their permissions.
 
 ### Client Clarifications
-
-
-
 > **Question:** Em relação a este requisito, podemos presumir que já houve consentimento por parte do utilizador que vai ser registado?<br><br>
 **Answer:** esta funcionalidade apenas permite criar utilizadores de tipo "não utente" para os funcionários da instituição pelo que a aplicação do RGPD e restantes questões de privacidade estão abrangidas pela relação laboral existente
 
@@ -55,8 +52,6 @@ As an Administrator, an actor of the system responsible for the management of th
 - Fleet Manager: User role that manages the data of the robots and drones and the types of tasks.
 
 - Task Manager: User role that manages the data of the tasks.
-
-### 3.1. Domain Model Excerpt
 
 ## 4. Design
 
