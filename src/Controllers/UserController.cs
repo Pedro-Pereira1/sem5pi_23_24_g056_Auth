@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RobDroneGoAuth.Dto.Users;
 using RobDroneGoAuth.Services.Users;
@@ -58,6 +59,7 @@ namespace RobDroneGoAuth.Controllers.User
 
 
         [HttpGet("{id}")]
+        //[Authorize(Roles = "Admin, Backoffice")]
         public async Task<ActionResult<UserDto>> GetUserInfo(string id){
             Console.WriteLine("sono qui");
             try
