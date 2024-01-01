@@ -223,5 +223,35 @@ namespace RobDroneGoAuth.Services.Users
                 throw new Exception(e.Message);
             }
         }
-    }
+
+        public async Task<List<UserDto>> GetAllUtentes()
+        {
+        try
+        {
+            _logger.LogInformation("UserService: Getting all users\n\n");
+
+            var users = await this._userRepository.GetAllUtentes();
+            if (users == null || users.Count == 0)
+            {
+                throw new BusinessRuleValidationException("Users not found");
+            } 
+
+            List<UserDto> userDtos = new List<UserDto>();
+            foreach (var user in users)
+            {
+                if(user.Role.Value == "Utente")
+                userDtos.Add(new UserDto(user.Name.NameString, user.Id.Value, user.PhoneNumber.Number, user.TaxPayerNumber.Number, user.Role.Value));
+            }
+            return userDtos;
+        }
+        catch (BusinessRuleValidationException e)
+        {
+            _logger.LogWarning("UserService: Error has occurred while getting all users: " + e.Message + "\n\n");
+            throw new BusinessRuleValidationException(e.Message);
+        }
+    }   
+
+}
+
+    
 }

@@ -11,5 +11,6 @@ namespace RobDroneGoAuth.Services.Users
         Task<UserDto> GetUserInfo(string id);
         Task<bool> DeleteUser(string id);
         Task<UserDto> UpdateUser(UserDto dto);
+        Task<List<UserDto>> GetAllUtentes();
     }
 }
