@@ -96,6 +96,19 @@ namespace RobDroneGoAuth.Controllers.User
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpGet("listAllUtentes")]
+        public async Task<ActionResult<List<UserDto>>> GetAllUtentes(){
+            try
+            {
+                var users = await this._userService.GetAllUtentes();
+                return Ok(users);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
            
     }
+}
 }
