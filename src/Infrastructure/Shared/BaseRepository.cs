@@ -45,5 +45,10 @@ namespace DDDSample1.Infrastructure.Shared
         {
             this._objs.Remove(obj);
         }
+
+        public async Task<List<TEntity>> GetAllUtentes()
+        {
+            return await this._objs.ToListAsync();
+        }
     }
 }
