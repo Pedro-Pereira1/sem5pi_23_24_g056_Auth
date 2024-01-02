@@ -48,16 +48,16 @@
       ><path d="M0 0 L0 180 L75 180 L75 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath15"
-      ><path d="M0 0 L133 0 L133 75 L0 75 L0 0 Z"
+      ><path d="M0 0 L132 0 L132 75 L0 75 L0 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath16"
-      ><path d="M0 0 L0 75 L133 75 L133 0 Z"
+      ><path d="M0 0 L0 75 L132 75 L132 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath17"
-      ><path d="M0 0 L178 0 L178 222 L0 222 L0 0 Z"
+      ><path d="M0 0 L234 0 L234 277 L0 277 L0 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath18"
-      ><path d="M0 0 L0 222 L178 222 L178 0 Z"
+      ><path d="M0 0 L0 277 L234 277 L234 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath19"
       ><path d="M0 0 L154 0 L154 75 L0 75 L0 0 Z"
@@ -66,34 +66,34 @@
       ><path d="M0 0 L0 75 L154 75 L154 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath21"
-      ><path d="M0 0 L115 0 L115 221 L0 221 L0 0 Z"
+      ><path d="M0 0 L115 0 L115 220 L0 220 L0 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath22"
-      ><path d="M0 0 L0 221 L115 221 L115 0 Z"
+      ><path d="M0 0 L0 220 L115 220 L115 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath23"
-      ><path d="M0 0 L168 0 L168 75 L0 75 L0 0 Z"
+      ><path d="M0 0 L169 0 L169 75 L0 75 L0 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath24"
-      ><path d="M0 0 L0 75 L168 75 L168 0 Z"
+      ><path d="M0 0 L0 75 L169 75 L169 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath25"
-      ><path d="M0 0 L194 0 L194 210 L0 210 L0 0 Z"
+      ><path d="M0 0 L209 0 L209 225 L0 225 L0 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath26"
-      ><path d="M0 0 L0 210 L194 210 L194 0 Z"
+      ><path d="M0 0 L0 225 L209 225 L209 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath27"
-      ><path d="M0 0 L115 0 L115 208 L0 208 L0 0 Z"
+      ><path d="M0 0 L129 0 L129 224 L0 224 L0 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath28"
-      ><path d="M0 0 L0 208 L115 208 L115 0 Z"
+      ><path d="M0 0 L0 224 L129 224 L129 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath29"
-      ><path d="M0 0 L208 0 L208 210 L0 210 L0 0 Z"
+      ><path d="M0 0 L224 0 L224 225 L0 225 L0 0 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath30"
-      ><path d="M0 0 L0 210 L208 210 L208 0 Z"
+      ><path d="M0 0 L0 225 L224 225 L224 0 Z"
       /></clipPath
     ></defs
     ><g fill="white" text-rendering="geometricPrecision" fill-opacity="1" stroke-opacity="1" stroke="white"
@@ -107,8 +107,8 @@
     ><path fill="none" d="M0 20 L691 20 L691 809 L0 809 L0 0 L138 0 L138 20" clip-path="url(#clipPath1)"
     /></g
     ><g font-size="11px" transform="translate(2,22)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
-    ><text x="333" xml:space="preserve" y="12" clip-path="url(#clipPath2)" stroke="none"
-      >MDL</text
+    ><text x="334" xml:space="preserve" y="12" clip-path="url(#clipPath2)" stroke="none"
+      >Auth</text
     ></g
     ><g font-size="11px" transform="translate(68,84)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
     ><rect x="0" width="118" height="20" y="0" clip-path="url(#clipPath3)" stroke="none"
@@ -132,25 +132,25 @@
     ><text x="251" xml:space="preserve" y="12" clip-path="url(#clipPath6)" stroke="none"
       >Interface Adapters</text
     ></g
-    ><g font-size="11px" transform="translate(68,445)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(68,444)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
     ><rect x="0" width="118" height="20" y="0" clip-path="url(#clipPath7)" stroke="none"
       /><rect x="0" width="591" height="107" y="20" clip-path="url(#clipPath7)" stroke="none"
     /></g
-    ><g stroke-linecap="butt" font-size="11px" transform="translate(68,445)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1" stroke-miterlimit="0"
+    ><g stroke-linecap="butt" font-size="11px" transform="translate(68,444)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1" stroke-miterlimit="0"
     ><path fill="none" d="M0 20 L591 20 L591 127 L0 127 L0 0 L118 0 L118 20" clip-path="url(#clipPath7)"
     /></g
-    ><g font-size="11px" transform="translate(68,465)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(68,464)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="198" xml:space="preserve" y="12" clip-path="url(#clipPath8)" stroke="none"
       >Application Services/Use Case Services</text
     ></g
-    ><g font-size="11px" transform="translate(68,616)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(68,617)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
     ><rect x="0" width="118" height="20" y="0" clip-path="url(#clipPath7)" stroke="none"
       /><rect x="0" width="591" height="107" y="20" clip-path="url(#clipPath7)" stroke="none"
     /></g
-    ><g stroke-linecap="butt" font-size="11px" transform="translate(68,616)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1" stroke-miterlimit="0"
+    ><g stroke-linecap="butt" font-size="11px" transform="translate(68,617)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1" stroke-miterlimit="0"
     ><path fill="none" d="M0 20 L591 20 L591 127 L0 127 L0 0 L118 0 L118 20" clip-path="url(#clipPath7)"
     /></g
-    ><g font-size="11px" transform="translate(68,636)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(68,637)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="244" xml:space="preserve" y="12" clip-path="url(#clipPath8)" stroke="none"
       >Entities/Core/Domain</text
     ></g
@@ -209,69 +209,69 @@
     ><text x="23" xml:space="preserve" y="12" clip-path="url(#clipPath10)" stroke="none"
       >ImplControllers</text
     ></g
-    ><g font-size="11px" transform="translate(294,488)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(294,487)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
     ><rect x="0" width="24" height="20" y="0" clip-path="url(#clipPath9)" stroke="none"
       /><rect x="0" width="120" height="54" y="20" clip-path="url(#clipPath9)" stroke="none"
     /></g
-    ><g stroke-linecap="butt" font-size="11px" transform="translate(294,488)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1" stroke-miterlimit="0"
+    ><g stroke-linecap="butt" font-size="11px" transform="translate(294,487)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1" stroke-miterlimit="0"
     ><path fill="none" d="M0 20 L120 20 L120 74 L0 74 L0 0 L24 0 L24 20" clip-path="url(#clipPath9)"
     /></g
-    ><g font-size="11px" transform="translate(294,508)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(294,507)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="29" xml:space="preserve" y="12" clip-path="url(#clipPath10)" stroke="none"
       >ImplServices</text
     ></g
-    ><g font-size="11px" transform="translate(94,487)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(94,486)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
     ><rect x="0" width="24" height="20" y="0" clip-path="url(#clipPath9)" stroke="none"
       /><rect x="0" width="120" height="54" y="20" clip-path="url(#clipPath9)" stroke="none"
     /></g
-    ><g stroke-linecap="butt" font-size="11px" transform="translate(94,487)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1" stroke-miterlimit="0"
+    ><g stroke-linecap="butt" font-size="11px" transform="translate(94,486)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1" stroke-miterlimit="0"
     ><path fill="none" d="M0 20 L120 20 L120 74 L0 74 L0 0 L24 0 L24 20" clip-path="url(#clipPath9)"
     /></g
-    ><g font-size="11px" transform="translate(94,507)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(94,506)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="37" xml:space="preserve" y="12" clip-path="url(#clipPath10)" stroke="none"
       >IServices</text
     ></g
-    ><g font-size="11px" transform="translate(509,487)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(509,486)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
     ><rect x="0" width="24" height="20" y="0" clip-path="url(#clipPath9)" stroke="none"
       /><rect x="0" width="120" height="54" y="20" clip-path="url(#clipPath9)" stroke="none"
     /></g
-    ><g stroke-linecap="butt" font-size="11px" transform="translate(509,487)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1" stroke-miterlimit="0"
+    ><g stroke-linecap="butt" font-size="11px" transform="translate(509,486)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1" stroke-miterlimit="0"
     ><path fill="none" d="M0 20 L120 20 L120 74 L0 74 L0 0 L24 0 L24 20" clip-path="url(#clipPath9)"
     /></g
-    ><g font-size="11px" transform="translate(509,507)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(509,506)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="27" xml:space="preserve" y="12" clip-path="url(#clipPath10)" stroke="none"
       >IRepositories</text
     ></g
-    ><g font-size="11px" transform="translate(292,657)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(292,658)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
     ><rect x="0" width="24" height="20" y="0" clip-path="url(#clipPath9)" stroke="none"
       /><rect x="0" width="120" height="54" y="20" clip-path="url(#clipPath9)" stroke="none"
     /></g
-    ><g stroke-linecap="butt" font-size="11px" transform="translate(292,657)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1" stroke-miterlimit="0"
+    ><g stroke-linecap="butt" font-size="11px" transform="translate(292,658)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1" stroke-miterlimit="0"
     ><path fill="none" d="M0 20 L120 20 L120 74 L0 74 L0 0 L24 0 L24 20" clip-path="url(#clipPath9)"
     /></g
-    ><g font-size="11px" transform="translate(292,677)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(292,678)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="23" xml:space="preserve" y="12" clip-path="url(#clipPath10)" stroke="none"
       >Values Objects</text
     ></g
-    ><g font-size="11px" transform="translate(94,657)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(94,658)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
     ><rect x="0" width="24" height="20" y="0" clip-path="url(#clipPath9)" stroke="none"
       /><rect x="0" width="120" height="54" y="20" clip-path="url(#clipPath9)" stroke="none"
     /></g
-    ><g stroke-linecap="butt" font-size="11px" transform="translate(94,657)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1" stroke-miterlimit="0"
+    ><g stroke-linecap="butt" font-size="11px" transform="translate(94,658)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1" stroke-miterlimit="0"
     ><path fill="none" d="M0 20 L120 20 L120 74 L0 74 L0 0 L24 0 L24 20" clip-path="url(#clipPath9)"
     /></g
-    ><g font-size="11px" transform="translate(94,677)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(94,678)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="31" xml:space="preserve" y="12" clip-path="url(#clipPath10)" stroke="none"
       >Aggregates</text
     ></g
-    ><g font-size="11px" transform="translate(509,657)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(509,658)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
     ><rect x="0" width="24" height="20" y="0" clip-path="url(#clipPath9)" stroke="none"
       /><rect x="0" width="120" height="54" y="20" clip-path="url(#clipPath9)" stroke="none"
     /></g
-    ><g stroke-linecap="butt" font-size="11px" transform="translate(509,657)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1" stroke-miterlimit="0"
+    ><g stroke-linecap="butt" font-size="11px" transform="translate(509,658)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1" stroke-miterlimit="0"
     ><path fill="none" d="M0 20 L120 20 L120 74 L0 74 L0 0 L24 0 L24 20" clip-path="url(#clipPath9)"
     /></g
-    ><g font-size="11px" transform="translate(509,677)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
+    ><g font-size="11px" transform="translate(509,678)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><text x="38" xml:space="preserve" y="12" clip-path="url(#clipPath10)" stroke="none"
       >Services</text
     ></g
@@ -290,40 +290,40 @@
       /><line clip-path="url(#clipPath16)" stroke-dashoffset="0" fill="none" x1="36" x2="48" y1="36" y2="42" stroke-dasharray="none"
       /><line clip-path="url(#clipPath16)" stroke-dashoffset="0" fill="none" x1="36" x2="48" y1="36" y2="30" stroke-dasharray="none"
     /></g
-    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(160,325)" stroke-opacity="1" fill="black" stroke-dasharray="5" font-family="sans-serif" stroke-linejoin="round" font-size="11px" stroke-dashoffset="1" image-rendering="optimizeQuality"
-    ><line y2="162" fill="none" x1="119" clip-path="url(#clipPath18)" x2="56" y1="56"
-      /><line clip-path="url(#clipPath18)" stroke-dashoffset="0" fill="none" x1="56" x2="67" y1="162" y2="155" stroke-dasharray="none"
-      /><line clip-path="url(#clipPath18)" stroke-dashoffset="0" fill="none" x1="56" x2="56" y1="162" y2="149" stroke-dasharray="none"
+    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(132,297)" stroke-opacity="1" fill="black" stroke-dasharray="5" font-family="sans-serif" stroke-linejoin="round" font-size="11px" stroke-dashoffset="1" image-rendering="optimizeQuality"
+    ><line y2="190" fill="none" x1="147" clip-path="url(#clipPath18)" x2="83" y1="83"
+      /><line clip-path="url(#clipPath18)" stroke-dashoffset="0" fill="none" x1="83" x2="94" y1="190" y2="183" stroke-dasharray="none"
+      /><line clip-path="url(#clipPath18)" stroke-dashoffset="0" fill="none" x1="83" x2="83" y1="190" y2="177" stroke-dasharray="none"
     /></g
-    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(179,500)" stroke-opacity="1" fill="black" stroke-dasharray="5" font-family="sans-serif" stroke-linejoin="round" font-size="11px" stroke-dashoffset="1" image-rendering="optimizeQuality"
+    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(179,499)" stroke-opacity="1" fill="black" stroke-dasharray="5" font-family="sans-serif" stroke-linejoin="round" font-size="11px" stroke-dashoffset="1" image-rendering="optimizeQuality"
     ><line y2="36" fill="none" x1="115" clip-path="url(#clipPath20)" x2="36" y1="36"
       /><line clip-path="url(#clipPath20)" stroke-dashoffset="0" fill="none" x1="36" x2="48" y1="36" y2="42" stroke-dasharray="none"
       /><line clip-path="url(#clipPath20)" stroke-dashoffset="0" fill="none" x1="36" x2="48" y1="36" y2="30" stroke-dasharray="none"
     /></g
-    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(464,326)" stroke-opacity="1" fill="black" stroke-dasharray="5" font-family="sans-serif" stroke-linejoin="round" font-size="11px" stroke-dashoffset="1" image-rendering="optimizeQuality"
-    ><line y2="161" fill="none" x1="56" clip-path="url(#clipPath22)" x2="56" y1="56"
-      /><line clip-path="url(#clipPath22)" stroke-dashoffset="0" fill="none" x1="56" x2="62" y1="161" y2="149" stroke-dasharray="none"
-      /><line clip-path="url(#clipPath22)" stroke-dashoffset="0" fill="none" x1="56" x2="50" y1="161" y2="149" stroke-dasharray="none"
+    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(464,325)" stroke-opacity="1" fill="black" stroke-dasharray="5" font-family="sans-serif" stroke-linejoin="round" font-size="11px" stroke-dashoffset="1" image-rendering="optimizeQuality"
+    ><line y2="161" fill="none" x1="55" clip-path="url(#clipPath22)" x2="55" y1="56"
+      /><line clip-path="url(#clipPath22)" stroke-dashoffset="0" fill="none" x1="55" x2="61" y1="161" y2="149" stroke-dasharray="none"
+      /><line clip-path="url(#clipPath22)" stroke-dashoffset="0" fill="none" x1="55" x2="49" y1="161" y2="149" stroke-dasharray="none"
     /></g
-    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(379,500)" stroke-opacity="1" fill="black" stroke-dasharray="5" font-family="sans-serif" stroke-linejoin="round" font-size="11px" stroke-dashoffset="1" image-rendering="optimizeQuality"
+    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(379,499)" stroke-opacity="1" fill="black" stroke-dasharray="5" font-family="sans-serif" stroke-linejoin="round" font-size="11px" stroke-dashoffset="1" image-rendering="optimizeQuality"
     ><line y2="36" fill="none" x1="36" clip-path="url(#clipPath24)" x2="130" y1="36"
       /><line clip-path="url(#clipPath24)" stroke-dashoffset="0" fill="none" x1="130" x2="118" y1="36" y2="30" stroke-dasharray="none"
       /><line clip-path="url(#clipPath24)" stroke-dashoffset="0" fill="none" x1="130" x2="118" y1="36" y2="42" stroke-dasharray="none"
     /></g
-    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(160,507)" stroke-opacity="1" fill="black" stroke-dasharray="5" font-family="sans-serif" stroke-linejoin="round" font-size="11px" stroke-dashoffset="1" image-rendering="optimizeQuality"
-    ><line y2="150" fill="none" x1="134" clip-path="url(#clipPath26)" x2="56" y1="56"
-      /><line clip-path="url(#clipPath26)" stroke-dashoffset="0" fill="none" x1="56" x2="68" y1="150" y2="144" stroke-dasharray="none"
-      /><line clip-path="url(#clipPath26)" stroke-dashoffset="0" fill="none" x1="56" x2="58" y1="150" y2="137" stroke-dasharray="none"
+    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(152,500)" stroke-opacity="1" fill="black" stroke-dasharray="5" font-family="sans-serif" stroke-linejoin="round" font-size="11px" stroke-dashoffset="1" image-rendering="optimizeQuality"
+    ><line y2="159" fill="none" x1="142" clip-path="url(#clipPath26)" x2="62" y1="63"
+      /><line clip-path="url(#clipPath26)" stroke-dashoffset="0" fill="none" x1="62" x2="74" y1="159" y2="153" stroke-dasharray="none"
+      /><line clip-path="url(#clipPath26)" stroke-dashoffset="0" fill="none" x1="62" x2="64" y1="159" y2="146" stroke-dasharray="none"
     /></g
-    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(249,508)" stroke-opacity="1" fill="black" stroke-dasharray="5" font-family="sans-serif" stroke-linejoin="round" font-size="11px" stroke-dashoffset="1" image-rendering="optimizeQuality"
-    ><line y2="149" fill="none" x1="56" clip-path="url(#clipPath28)" x2="56" y1="56"
-      /><line clip-path="url(#clipPath28)" stroke-dashoffset="0" fill="none" x1="56" x2="62" y1="149" y2="137" stroke-dasharray="none"
-      /><line clip-path="url(#clipPath28)" stroke-dashoffset="0" fill="none" x1="56" x2="50" y1="149" y2="137" stroke-dasharray="none"
+    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(240,500)" stroke-opacity="1" fill="black" stroke-dasharray="5" font-family="sans-serif" stroke-linejoin="round" font-size="11px" stroke-dashoffset="1" image-rendering="optimizeQuality"
+    ><line y2="158" fill="none" x1="63" clip-path="url(#clipPath28)" x2="63" y1="63"
+      /><line clip-path="url(#clipPath28)" stroke-dashoffset="0" fill="none" x1="63" x2="69" y1="158" y2="146" stroke-dasharray="none"
+      /><line clip-path="url(#clipPath28)" stroke-dashoffset="0" fill="none" x1="63" x2="57" y1="158" y2="146" stroke-dasharray="none"
     /></g
-    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(360,507)" stroke-opacity="1" fill="black" stroke-dasharray="5" font-family="sans-serif" stroke-linejoin="round" font-size="11px" stroke-dashoffset="1" image-rendering="optimizeQuality"
-    ><line y2="150" fill="none" x1="56" clip-path="url(#clipPath30)" x2="149" y1="56"
-      /><line clip-path="url(#clipPath30)" stroke-dashoffset="0" fill="none" x1="149" x2="145" y1="150" y2="137" stroke-dasharray="none"
-      /><line clip-path="url(#clipPath30)" stroke-dashoffset="0" fill="none" x1="149" x2="136" y1="150" y2="146" stroke-dasharray="none"
+    ><g fill-opacity="1" text-rendering="geometricPrecision" stroke="black" stroke-linecap="butt" transform="translate(352,499)" stroke-opacity="1" fill="black" stroke-dasharray="5" font-family="sans-serif" stroke-linejoin="round" font-size="11px" stroke-dashoffset="1" image-rendering="optimizeQuality"
+    ><line y2="159" fill="none" x1="62" clip-path="url(#clipPath30)" x2="157" y1="63"
+      /><line clip-path="url(#clipPath30)" stroke-dashoffset="0" fill="none" x1="157" x2="153" y1="159" y2="146" stroke-dasharray="none"
+      /><line clip-path="url(#clipPath30)" stroke-dashoffset="0" fill="none" x1="157" x2="144" y1="159" y2="155" stroke-dasharray="none"
     /></g
     ><g font-size="8px" fill-opacity="1" fill="rgb(120,120,120)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" stroke="rgb(120,120,120)" stroke-opacity="1"
     ><text x="0" xml:space="preserve" y="10" stroke="none"
