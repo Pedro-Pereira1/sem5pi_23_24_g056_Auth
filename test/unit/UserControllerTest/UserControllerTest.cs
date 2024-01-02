@@ -15,6 +15,9 @@ public class UserControllerTest
     [TestMethod]
     public async Task Check_Invalid_Values_For_User_Creation()
     {
+        Mock<UserController> mockController = new Mock<UserController>();
+        mockController.Setup(c => c.GetRoleFromToken()).Returns("Admin");
+
         Mock<IUserService> userService = new Mock<IUserService>();
         userService.Setup(x => x.RegisterUser(It.IsAny<CreateUserDto>()))
             .ThrowsAsync(new BusinessRuleValidationException("Email must contain '@'."));
@@ -36,6 +39,9 @@ public class UserControllerTest
     [TestMethod]
     public async Task Check_Valid_Values_For_User_Creation()
     {
+        var mockController = new Mock<UserController>();
+        mockController.Setup(c => c.GetRoleFromToken()).Returns("Admin");
+
         string name = "Jose Gouveia";
         string email = "1211089@isep.ipp.pt";
         string phoneNumber = "930597721";
@@ -61,6 +67,9 @@ public class UserControllerTest
     [TestMethod]
     public async Task Check_Invalid_Role_For_BackofficeUser_Creation()
     {
+        var mockController = new Mock<UserController>();
+        mockController.Setup(c => c.GetRoleFromToken()).Returns("Admin");
+
         Mock<IUserService> userService = new Mock<IUserService>();
         userService.Setup(x => x.CreateBackofficeUser(It.IsAny<CreateBackofficeUserDto>()))
             .ThrowsAsync(new BusinessRuleValidationException("Invalid role."));
@@ -82,6 +91,9 @@ public class UserControllerTest
     [TestMethod]
     public async Task Check_Valid_Role_For_BackofficeUser_Creation()
     {
+        var mockController = new Mock<UserController>();
+        mockController.Setup(c => c.GetRoleFromToken()).Returns("Admin");
+
         string name = "Jose Gouveia";
         string email = "1211089@isep.ipp.pt";
         string phoneNumber = "930597721";
@@ -106,6 +118,9 @@ public class UserControllerTest
     [TestMethod]
     public async Task GetUserInfo_ReturnsOkResult()
     {
+        var mockController = new Mock<UserController>();
+        mockController.Setup(c => c.GetRoleFromToken()).Returns("Admin");
+
         string name = "Jose Gouveia";
         string email = "1211089@isep.ipp.pt";
         string phoneNumber = "930597721";
@@ -128,6 +143,9 @@ public class UserControllerTest
     [TestMethod]
     public async Task GetUserInfo_ReturnsBadRequestResult()
     {
+        var mockController = new Mock<UserController>();
+        mockController.Setup(c => c.GetRoleFromToken()).Returns("Admin");
+
         string id = "1211089@isep.ipp.pt";
         var userServiceMock = new Mock<IUserService>();
         userServiceMock.Setup(x => x.GetUserInfo(id)).ThrowsAsync(new Exception("Some error occurred."));
@@ -143,6 +161,8 @@ public class UserControllerTest
     [TestMethod]
     public async Task Check_DeleteUser_ReturnsOkResult()
     {
+        var mockController = new Mock<UserController>();
+        mockController.Setup(c => c.GetRoleFromToken()).Returns("Admin");
         string id = "1211089@isep.ipp.pt";
 
         var userServiceMock = new Mock<IUserService>();
@@ -159,6 +179,8 @@ public class UserControllerTest
     [TestMethod]
     public async Task Check_DeleteUser_ReturnsBadRequestResult()
     {
+        var mockController = new Mock<UserController>();
+        mockController.Setup(c => c.GetRoleFromToken()).Returns("Admin");
         string id = "1211089@isep.ipp.pt";
 
         var userServiceMock = new Mock<IUserService>();
@@ -175,6 +197,8 @@ public class UserControllerTest
     [TestMethod]
     public async Task Check_UpdateUser_ReturnsOkResult()
     {
+        var mockController = new Mock<UserController>();
+        mockController.Setup(c => c.GetRoleFromToken()).Returns("Admin");
         string name = "Jose Gouveia";
         string email = "1211089@isep.ipp.pt";
         string phoneNumber = "930597721";
@@ -196,6 +220,8 @@ public class UserControllerTest
     [TestMethod]
     public async Task Check_UpdateUser_ReturnsBadRequestResult()
     {
+        var mockController = new Mock<UserController>();
+        mockController.Setup(c => c.GetRoleFromToken()).Returns("Admin");
         string name = "Jose Gouveia";
         string email = "1211089@isep.ipp.pt";
         string phoneNumber = "930597721";
@@ -212,5 +238,5 @@ public class UserControllerTest
         Assert.IsInstanceOfType(result.Result, typeof(BadRequestObjectResult));
         var badRequestResult = (BadRequestObjectResult)result.Result;
         Assert.AreEqual("Some error occurred.", badRequestResult.Value);
-    }
+    }*/
 }

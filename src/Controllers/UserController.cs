@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RobDroneGoAuth.Dto.Users;
 using RobDroneGoAuth.Services.Users;
+using System.IdentityModel.Tokens.Jwt;
+using RobDroneGoAuth.Controllers.User;
+
 
 namespace RobDroneGoAuth.Controllers.User
 {
@@ -46,6 +49,9 @@ namespace RobDroneGoAuth.Controllers.User
         [HttpPost("backoffice")]
         public async Task<ActionResult<UserDto>> CreateBackofficeUser([FromBody] CreateBackofficeUserDto dto)
         {
+            string role = GetRoleFromToken();
+            if(role != "Admin") 
+                return Unauthorized();
             try
             {
                 var user = await this._userService.CreateBackofficeUser(dto);
@@ -59,9 +65,11 @@ namespace RobDroneGoAuth.Controllers.User
 
 
         [HttpGet("{id}")]
-        //[Authorize(Roles = "Admin, Backoffice")]
         public async Task<ActionResult<UserDto>> GetUserInfo(string id){
-            Console.WriteLine("sono qui");
+            string role = GetRoleFromToken();
+            if(role != "TaskManager" && role != "Admin" && role != "FleetManager" && role != "Utente" && role != "CampusManager") 
+                return Unauthorized();
+
             try
             {
                 var user = await this._userService.GetUserInfo(id);
@@ -75,6 +83,10 @@ namespace RobDroneGoAuth.Controllers.User
         
         [HttpDelete("{id}")]
         public async Task<ActionResult<bool>> DeleteUser(string id){
+            string role = GetRoleFromToken();
+            if(role != "TaskManager" && role != "Admin" && role != "FleetManager" && role != "Utente" && role != "CampusManager") 
+                return Unauthorized();
+
             try
             {
                 var user = await this._userService.DeleteUser(id);
@@ -88,6 +100,10 @@ namespace RobDroneGoAuth.Controllers.User
 
         [HttpPut("edit")]
         public async Task<ActionResult<UserDto>> UpdateUser(UserDto dto){
+            string role = GetRoleFromToken();
+            if(role != "TaskManager" && role != "Admin" && role != "FleetManager" && role != "Utente" && role != "CampusManager") 
+                return Unauthorized();
+
             try
             {
                 var user = await this._userService.UpdateUser(dto);
@@ -101,6 +117,11 @@ namespace RobDroneGoAuth.Controllers.User
 
         [HttpGet("listAllUtentes")]
         public async Task<ActionResult<List<UserDto>>> GetAllUtentes(){
+            string role = GetRoleFromToken();
+            if(role != "TaskManager")
+                return Unauthorized();
+
+
             try
             {
                 var users = await this._userService.GetAllUtentes();
@@ -111,6 +132,19 @@ namespace RobDroneGoAuth.Controllers.User
                 return BadRequest(e.Message);
             }
            
+    }
+
+
+    public virtual string GetRoleFromToken()
+    {
+        string token = HttpContext.Request.Headers["Authorization"];
+        var handler = new JwtSecurityTokenHandler();
+        var jwtToken = handler.ReadJwtToken(token.Replace("Bearer ", ""));
+
+        var roleClaim = jwtToken.Claims.First(claim => claim.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role");
+        string role = roleClaim.Value;
+
+        return role;
     }
 }
 }
