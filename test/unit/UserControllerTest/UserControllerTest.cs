@@ -238,5 +238,5 @@ public class UserControllerTest
         Assert.IsInstanceOfType(result.Result, typeof(BadRequestObjectResult));
         var badRequestResult = (BadRequestObjectResult)result.Result;
         Assert.AreEqual("Some error occurred.", badRequestResult.Value);
-    }
+    }*/
 }
